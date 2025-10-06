@@ -17,6 +17,7 @@ import TasasAPI from '@/lib/api-clients/tasas-api'
 import ServiciosRemesasAPI, { SERVICIOS_REMESAS } from '@/lib/api-clients/servicios-remesas'
 import { TasaCambio, ServicioRemesa } from '@/types'
 import { formatCurrency, formatNumber } from '@/lib/utils'
+import * as analytics from '@/lib/analytics'
 
 interface ResultadoComparacion {
   servicio: ServicioRemesa
@@ -101,6 +102,9 @@ export default function CalculadoraPage() {
       setResultados(resultadosConRanking)
       setCalculado(true)
       setLoading(false)
+
+      // Track calculator usage
+      analytics.trackCalculatorUse(monto, tasa.fuente)
     }, 500)
   }
 
@@ -331,6 +335,13 @@ export default function CalculadoraPage() {
                       href={resultado.servicio.urlAfiliado || resultado.servicio.url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => {
+                        // Track service click conversion
+                        analytics.trackServiceClick(
+                          resultado.servicio.nombre,
+                          parseFloat(montoUSD) || 0
+                        )
+                      }}
                       className={`${
                         resultado.ranking === 1
                           ? 'bg-green-600 hover:bg-green-700'

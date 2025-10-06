@@ -1,0 +1,5 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+Sitemap: https://remesas-ve-jyj1v16vn-macglobalapps-gmailcoms-projects.vercel.app/sitemap.xml
