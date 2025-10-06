@@ -76,12 +76,18 @@ export default function Home() {
               Ahorra hasta 8% en cada envío. 100% seguro y transparente.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition shadow-lg hover:shadow-xl">
+              <a
+                href="/calculadora"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition shadow-lg hover:shadow-xl text-center"
+              >
                 Calcular Ahora
-              </button>
-              <button className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-full font-semibold text-lg transition">
+              </a>
+              <a
+                href="/calculadora"
+                className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-full font-semibold text-lg transition text-center"
+              >
                 Ver Demo
-              </button>
+              </a>
             </div>
 
             {/* Stats */}
@@ -235,9 +241,12 @@ export default function Home() {
           <p className="text-xl text-blue-100 mb-8">
             Únete a miles de venezolanos que ya están ahorrando en cada envío
           </p>
-          <button className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-full font-bold text-lg transition shadow-lg hover:shadow-xl">
+          <a
+            href="/calculadora"
+            className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-full font-bold text-lg transition shadow-lg hover:shadow-xl inline-block"
+          >
             Calcular Mi Primera Remesa
-          </button>
+          </a>
         </div>
       </section>
 
