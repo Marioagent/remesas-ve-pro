@@ -202,7 +202,7 @@ export default function CalculadoraPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
           >
-            Calculadora de Remesas
+            Comparador de Tasas de Cambio
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: -20 }}
@@ -210,8 +210,19 @@ export default function CalculadoraPage() {
             transition={{ delay: 0.1 }}
             className="text-xl text-gray-600"
           >
-            Compara 8+ servicios y encuentra la mejor opción para tu envío
+            Compara tasas en tiempo real de 60+ casas de cambio y servicios
           </motion.p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="mt-4 inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium"
+          >
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+            </svg>
+            Solo comparamos - No procesamos transacciones
+          </motion.div>
         </div>
 
         {/* Calculator Card */}
@@ -225,7 +236,7 @@ export default function CalculadoraPage() {
             {/* Monto Input */}
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
-                Monto a Enviar
+                Monto a Comparar
               </label>
               <div className="relative">
                 <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-xl">
@@ -354,12 +365,20 @@ export default function CalculadoraPage() {
             animate={{ opacity: 1, y: 0 }}
             className="space-y-4"
           >
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-2xl font-bold text-gray-900">
-                Resultados de Comparación
-              </h2>
-              <div className="text-sm text-gray-600">
-                {resultados.length} servicios disponibles
+            <div className="mb-6">
+              <div className="flex items-center justify-between mb-3">
+                <h2 className="text-2xl font-bold text-gray-900">
+                  Resultados de Comparación
+                </h2>
+                <div className="text-sm text-gray-600">
+                  {resultados.length} casas de cambio comparadas
+                </div>
+              </div>
+              <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-lg">
+                <p className="text-sm text-blue-800">
+                  <strong>Nota:</strong> REME LAT-USA solo compara tasas. Para realizar transacciones,
+                  serás redirigido al sitio web oficial de cada casa de cambio o servicio.
+                </p>
               </div>
             </div>
 
@@ -453,7 +472,7 @@ export default function CalculadoraPage() {
                           : 'bg-blue-600 hover:bg-blue-700'
                       } text-white px-6 py-3 rounded-xl font-semibold transition shadow-lg hover:shadow-xl flex items-center gap-2 whitespace-nowrap`}
                     >
-                      Enviar Ahora
+                      Ver en {resultado.servicio.nombre}
                       <ExternalLink className="w-4 h-4" />
                     </a>
                   </div>
@@ -480,17 +499,17 @@ export default function CalculadoraPage() {
               {
                 icon: <CheckCircle2 className="w-8 h-8" />,
                 title: 'Comparación Instantánea',
-                description: 'Ve en segundos cuál servicio te da la mejor tasa'
+                description: 'Comparamos tasas de 60+ casas de cambio en segundos'
               },
               {
                 icon: <DollarSign className="w-8 h-8" />,
-                title: 'Ahorra en Cada Envío',
-                description: 'La diferencia puede ser hasta 8% entre servicios'
+                title: 'Información Precisa',
+                description: 'Te mostramos dónde conseguir la mejor tasa del mercado'
               },
               {
                 icon: <Zap className="w-8 h-8" />,
-                title: 'Totalmente Gratis',
-                description: '100% gratuito, sin comisiones ocultas por usar el comparador'
+                title: 'Solo Comparamos',
+                description: 'Proporcionamos información - Tú eliges dónde hacer tu cambio'
               }
             ].map((item, index) => (
               <motion.div
