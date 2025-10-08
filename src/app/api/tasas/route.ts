@@ -1,42 +1,24 @@
+// API Route: /api/tasas
+// Obtiene todas las tasas (redirect a /api/rates/all)
+
 import { NextResponse } from 'next/server'
-import TasasAPI from '@/lib/api-clients/tasas-api'
+import { getAllRates } from '@/lib/api-clients/real-rates-api'
 
-// GET /api/tasas - Obtener todas las tasas
-export async function GET(request: Request) {
+export async function GET() {
   try {
-    const { searchParams } = new URL(request.url)
-    const fuente = searchParams.get('fuente')
-    const force = searchParams.get('force') === 'true'
-
-    // Limpiar cache si se solicita
-    if (force) {
-      TasasAPI.limpiarCache()
-    }
-
-    // Si se solicita una fuente específica
-    if (fuente) {
-      const tasa = await TasasAPI.obtenerTasa(fuente)
-      if (!tasa) {
-        return NextResponse.json(
-          { error: 'Fuente no encontrada' },
-          { status: 404 }
-        )
-      }
-      return NextResponse.json(tasa)
-    }
-
-    // Obtener todas las tasas
-    const tasas = await TasasAPI.obtenerTodasLasTasas()
+    const allRates = await getAllRates()
 
     return NextResponse.json({
-      tasas,
-      timestamp: new Date().toISOString(),
-      count: tasas.length
+      success: true,
+      data: allRates,
+      timestamp: new Date().toISOString()
     })
-  } catch (error) {
-    console.error('Error en API tasas:', error)
+  } catch (error: any) {
     return NextResponse.json(
-      { error: 'Error obteniendo tasas' },
+      {
+        success: false,
+        error: error.message || 'Failed to fetch rates'
+      },
       { status: 500 }
     )
   }

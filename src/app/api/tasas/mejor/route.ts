@@ -1,35 +1,37 @@
-import { NextResponse } from 'next/server'
-import TasasAPI from '@/lib/api-clients/tasas-api'
+// API Route: /api/tasas/mejor
+// Obtiene la mejor tasa para un país
 
-// GET /api/tasas/mejor - Obtener mejores tasas
-export async function GET(request: Request) {
+import { NextRequest, NextResponse } from 'next/server'
+import { getRatesByCountry } from '@/lib/api-clients/real-rates-api'
+
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url)
+  const country = searchParams.get('country') || 'VE'
+
   try {
-    const { searchParams } = new URL(request.url)
-    const tipo = searchParams.get('tipo') || 'compra'
+    const rates = await getRatesByCountry(country.toUpperCase())
 
-    let mejorTasa
-    if (tipo === 'venta') {
-      mejorTasa = await TasasAPI.obtenerMejorTasaVenta()
-    } else {
-      mejorTasa = await TasasAPI.obtenerMejorTasaCompra()
-    }
-
-    if (!mejorTasa) {
-      return NextResponse.json(
-        { error: 'No hay tasas disponibles' },
-        { status: 404 }
+    let bestRate
+    if ('rates' in rates) {
+      // País con múltiples tasas, retornar la más alta
+      bestRate = rates.rates.reduce((best, current) =>
+        current.rate > best.rate ? current : best
       )
+    } else {
+      bestRate = rates
     }
 
     return NextResponse.json({
-      tipo,
-      tasa: mejorTasa,
+      success: true,
+      data: bestRate,
       timestamp: new Date().toISOString()
     })
-  } catch (error) {
-    console.error('Error en API mejor tasa:', error)
+  } catch (error: any) {
     return NextResponse.json(
-      { error: 'Error obteniendo mejor tasa' },
+      {
+        success: false,
+        error: error.message || 'Failed to fetch best rate'
+      },
       { status: 500 }
     )
   }

@@ -1,65 +1,70 @@
-import { NextResponse } from 'next/server'
-import { obtenerServiciosRemesas, calcularRemesa } from '@/lib/api-clients/servicios-remesas'
+// API Route: /api/calcular
+// Calcula comparación de servicios con tasas REALES
 
-// POST /api/calcular - Calcular remesa
-export async function POST(request: Request) {
+import { NextRequest, NextResponse } from 'next/server'
+import { getRatesByCountry } from '@/lib/api-clients/real-rates-api'
+import { getServicesByCountry } from '@/data/real-services'
+
+export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { monto, servicioId } = body
+    const { monto, country = 'VE', rateType = 'paralelo' } = body
 
-    if (!monto || monto <= 0) {
+    if (!monto || isNaN(monto) || monto <= 0) {
       return NextResponse.json(
-        { error: 'Monto inválido' },
+        { success: false, error: 'Invalid amount' },
         { status: 400 }
       )
     }
 
-    const servicios = await obtenerServiciosRemesas()
+    // Obtener tasas del país
+    const rates = await getRatesByCountry(country.toUpperCase())
 
-    // Si se especifica un servicio
-    if (servicioId) {
-      const servicio = servicios.find(s => s.id === servicioId)
-      if (!servicio) {
-        return NextResponse.json(
-          { error: 'Servicio no encontrado' },
-          { status: 404 }
-        )
-      }
-
-      const calculo = calcularRemesa(monto, servicio)
-      return NextResponse.json(calculo)
+    let selectedRate
+    if ('rates' in rates) {
+      selectedRate = rates.rates.find(r => r.rateType === rateType) || rates.rates[0]
+    } else {
+      selectedRate = rates
     }
 
-    // Calcular para todos los servicios disponibles
-    const disponibles = servicios.filter(s => s.disponibilidad)
-    const calculos = disponibles.map(servicio => ({
-      servicio: servicio.nombre,
-      servicioId: servicio.id,
-      ...calcularRemesa(monto, servicio)
-    }))
+    // Obtener servicios del país
+    const services = getServicesByCountry(country.toUpperCase())
 
-    // Ordenar por mejor recepción
-    calculos.sort((a, b) => b.montoRecibir - a.montoRecibir)
+    // Calcular comparaciones
+    const comparisons = services
+      .filter(s => monto >= s.minAmount && monto <= s.maxAmount)
+      .map(servicio => {
+        const montoRecibir = monto * selectedRate.rate
 
-    // Calcular ahorro vs peor opción
-    const mejor = calculos[0]
-    const peor = calculos[calculos.length - 1]
-    const ahorroMaximo = mejor.montoRecibir - peor.montoRecibir
+        return {
+          servicio: {
+            id: servicio.id,
+            name: servicio.name,
+            type: servicio.type,
+            commission: servicio.commission,
+            avgTime: servicio.avgTime
+          },
+          montoRecibir,
+          tasa: selectedRate.rate,
+          montoEnvio: monto
+        }
+      })
+      .sort((a, b) => b.montoRecibir - a.montoRecibir)
 
     return NextResponse.json({
-      calculos,
-      resumen: {
-        mejorServicio: mejor.servicio,
-        mejorRecepcion: mejor.montoRecibir,
-        peorRecepcion: peor.montoRecibir,
-        ahorroMaximo,
-        porcentajeAhorro: ((ahorroMaximo / peor.montoRecibir) * 100).toFixed(2)
+      success: true,
+      data: {
+        comparisons,
+        rate: selectedRate,
+        country
       }
     })
-  } catch (error) {
-    console.error('Error en API calcular:', error)
+  } catch (error: any) {
     return NextResponse.json(
-      { error: 'Error calculando remesa' },
+      {
+        success: false,
+        error: error.message || 'Calculation failed'
+      },
       { status: 500 }
     )
   }

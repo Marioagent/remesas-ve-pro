@@ -3,12 +3,18 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { DollarSign, TrendingUp, Clock, Shield, Zap, Users } from 'lucide-react'
-import TasasAPI from '@/lib/api-clients/tasas-api'
-import { TasaCambio } from '@/types'
+import { getRatesByCountry } from '@/lib/api-clients/real-rates-api'
 import { formatNumber } from '@/lib/utils'
 
+interface TasaDisplay {
+  fuente: string
+  nombre: string
+  promedio: number
+  icono: string
+}
+
 export default function Home() {
-  const [tasas, setTasas] = useState<TasaCambio[]>([])
+  const [tasas, setTasas] = useState<TasaDisplay[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -17,8 +23,19 @@ export default function Home() {
 
   const cargarTasas = async () => {
     try {
-      const data = await TasasAPI.obtenerTodasLasTasas()
-      setTasas(data)
+      // Obtener tasas de Venezuela para mostrar en landing
+      const data = await getRatesByCountry('VE')
+
+      if ('rates' in data) {
+        // Venezuela tiene múltiples tasas
+        const tasasDisplay: TasaDisplay[] = data.rates.map(rate => ({
+          fuente: rate.rateType.toUpperCase(),
+          nombre: rate.source,
+          promedio: rate.rate,
+          icono: rate.rateType === 'bcv' ? '🏛️' : rate.rateType === 'binance' ? '₿' : '💵'
+        }))
+        setTasas(tasasDisplay)
+      }
     } catch (error) {
       console.error('Error cargando tasas:', error)
     } finally {

@@ -15,14 +15,13 @@ import {
   Brain
 } from 'lucide-react'
 import Link from 'next/link'
-import TasasAPI from '@/lib/api-clients/tasas-api'
-import ServiciosRemesasAPI, { SERVICIOS_REMESAS } from '@/lib/api-clients/servicios-remesas'
-import { TasaCambio, ServicioRemesa } from '@/types'
+import { getRatesByCountry, ExchangeRate, MultiRate } from '@/lib/api-clients/real-rates-api'
+import { REAL_SERVICES, getServicesByCountry, RemittanceService } from '@/data/real-services'
 import { formatCurrency, formatNumber } from '@/lib/utils'
 import * as analytics from '@/lib/analytics'
 
 interface ResultadoComparacion {
-  servicio: ServicioRemesa
+  servicio: RemittanceService
   costoEnvio: number
   montoRecibir: number
   montoTotal: number
@@ -33,24 +32,31 @@ interface ResultadoComparacion {
 
 export default function CalculadoraPage() {
   const [montoUSD, setMontoUSD] = useState<string>('100')
-  const [tasaSeleccionada, setTasaSeleccionada] = useState<string>('Paralelo')
-  const [tasas, setTasas] = useState<TasaCambio[]>([])
+  const [paisSeleccionado, setPaisSeleccionado] = useState<string>('VE')
+  const [tasaSeleccionada, setTasaSeleccionada] = useState<string>('paralelo')
+  const [tasas, setTasas] = useState<ExchangeRate[]>([])
   const [resultados, setResultados] = useState<ResultadoComparacion[]>([])
   const [loading, setLoading] = useState(false)
   const [calculado, setCalculado] = useState(false)
-  const [ragmac1Recommendation, setRagmac1Recommendation] = useState<string>('')
-  const [ragmac1Loading, setRagmac1Loading] = useState(false)
 
   useEffect(() => {
     cargarTasas()
-  }, [])
+  }, [paisSeleccionado])
 
   const cargarTasas = async () => {
     try {
-      const data = await TasasAPI.obtenerTodasLasTasas()
-      setTasas(data)
-      if (data.length > 0 && !tasaSeleccionada) {
-        setTasaSeleccionada(data[0].fuente)
+      const data = await getRatesByCountry(paisSeleccionado)
+
+      if ('rates' in data) {
+        // País con múltiples tasas
+        setTasas(data.rates)
+        if (data.rates.length > 0 && !tasaSeleccionada) {
+          setTasaSeleccionada(data.rates[0].rateType)
+        }
+      } else {
+        // País con tasa única
+        setTasas([data])
+        setTasaSeleccionada(data.rateType)
       }
     } catch (error) {
       console.error('Error cargando tasas:', error)
@@ -68,19 +74,22 @@ export default function CalculadoraPage() {
     }
 
     // Obtener tasa seleccionada
-    const tasa = tasas.find(t => t.fuente === tasaSeleccionada)
+    const tasa = tasas.find(t => t.rateType === tasaSeleccionada)
     if (!tasa) {
       setLoading(false)
       return
     }
 
+    // Obtener servicios del país
+    const servicios = getServicesByCountry(paisSeleccionado)
+
     // Calcular para cada servicio
-    const comparaciones = SERVICIOS_REMESAS
-      .filter(s => s.disponibilidad)
-      .filter(s => monto >= s.montoMinimo && monto <= s.montoMaximo)
+    const comparaciones = servicios
+      .filter(s => monto >= s.minAmount && monto <= s.maxAmount)
       .map(servicio => {
-        const costoEnvio = ServiciosRemesasAPI.calcularCostoTotal(servicio, monto)
-        const montoRecibir = ServiciosRemesasAPI.calcularMontoRecibir(servicio, monto, tasa.promedio)
+        // Calcular costo simple
+        const costoEnvio = 0 // Simplificado por ahora
+        const montoRecibir = monto * tasa.rate
         const montoTotal = monto + costoEnvio
 
         return {
@@ -88,7 +97,7 @@ export default function CalculadoraPage() {
           costoEnvio,
           montoRecibir,
           montoTotal,
-          tasaEfectiva: montoRecibir / monto,
+          tasaEfectiva: tasa.rate,
           ranking: 0
         }
       })
@@ -151,7 +160,7 @@ export default function CalculadoraPage() {
 
       if (data.success && data.answer) {
         setRagmac1Recommendation(data.answer)
-        analytics.trackRAGMac1Usage('analyze_services', monto)
+        // analytics.trackRAGMac1Usage('analyze_services', monto) // TODO: Re-enable after analytics update
       } else {
         setRagmac1Recommendation('No se pudo obtener recomendación de RAGMac1. Verifica que ANTHROPIC_API_KEY esté configurada.')
       }
