@@ -14,12 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Reme Global - Remesas Internacionales",
-  description: "Compara en tiempo real las tasas de cambio de todos los servicios de remesas a Venezuela. Ahorra hasta 8% en cada envío. 100% seguro y transparente.",
-  keywords: "remesas venezuela, enviar dinero venezuela, tasa cambio venezuela, dolares venezuela, zoom, reserve, airtm, binance p2p, reme global",
-  authors: [{ name: "Reme Global" }],
+  title: "REME LAT-USA - Comparador de Tasas de Cambio Latinoamérica",
+  description: "Compara en tiempo real tasas de cambio de 60+ casas de cambio en 14 países de Latinoamérica y USA. Encuentra la mejor tasa. 100% transparente, sin comisiones.",
+  keywords: "remesas latinoamerica, tasas cambio, argentina, brasil, chile, colombia, ecuador, peru, uruguay, venezuela, usa, casas de cambio, dolar hoy, tasa real",
+  authors: [{ name: "REME LAT-USA" }],
   manifest: "/manifest.json",
-  themeColor: "#6366f1",
+  themeColor: "#2563EB",
   viewport: {
     width: "device-width",
     initialScale: 1,
@@ -29,29 +29,29 @@ export const metadata: Metadata = {
   },
   appleWebApp: {
     capable: true,
-    statusBarStyle: "default",
-    title: "Reme Global",
+    statusBarStyle: "black-translucent",
+    title: "REME LAT-USA",
   },
   openGraph: {
-    title: "Reme Global - Remesas Internacionales",
-    description: "Compara tasas de cambio y ahorra hasta 8% en cada envío a Venezuela",
+    title: "REME LAT-USA - Comparador de Tasas Latinoamérica",
+    description: "Compara tasas de cambio en 14 países. Encuentra la mejor casa de cambio en tiempo real.",
     type: "website",
-    locale: "es_VE",
-    siteName: "Reme Global",
+    locale: "es_419",
+    siteName: "REME LAT-USA",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Reme Global - Remesas Internacionales",
-    description: "Compara tasas y ahorra en tus envíos a Venezuela",
+    title: "REME LAT-USA - Comparador de Tasas",
+    description: "Compara tasas de cambio en 14 países de Latinoamérica",
   },
   robots: {
     index: true,
     follow: true,
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/logo-reme-lat-usa.svg",
     apple: [
-      { url: "/icons/icon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/logo-reme-lat-usa.svg", sizes: "192x192", type: "image/svg+xml" },
     ],
   },
 };

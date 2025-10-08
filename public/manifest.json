@@ -1,14 +1,14 @@
 {
-  "name": "Reme Global - Remesas Internacionales",
-  "short_name": "Reme Global",
-  "description": "Compara tasas de cambio en tiempo real y ahorra hasta 8% en cada envío a Venezuela",
-  "theme_color": "#6366f1",
+  "name": "REME LAT-USA - Comparador de Tasas de Cambio Latinoamérica",
+  "short_name": "REME LAT-USA",
+  "description": "Compara tasas de cambio en 14 países de Latinoamérica en tiempo real. Encuentra la mejor casa de cambio.",
+  "theme_color": "#2563EB",
   "background_color": "#ffffff",
   "display": "standalone",
   "orientation": "portrait-primary",
   "scope": "/",
   "start_url": "/",
-  "lang": "es-VE",
+  "lang": "es-419",
   "dir": "ltr",
   "icons": [
     {
