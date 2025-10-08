@@ -292,7 +292,7 @@ export default function Dashboard() {
                     Predicción de Ahorros RAGMac1
                   </h2>
                   <p className="text-sm text-gray-600">
-                    IA especializada en optimización de remesas
+                    IA especializada en comparación de tasas de cambio
                   </p>
                 </div>
               </div>
@@ -470,10 +470,10 @@ export default function Dashboard() {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900">
-                    Calcular Remesa
+                    Comparar Tasas
                   </div>
                   <div className="text-sm text-gray-600">
-                    Compara servicios y tasas
+                    Ver mejores tasas de cambio
                   </div>
                 </div>
               </a>

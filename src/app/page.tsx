@@ -68,16 +68,22 @@ export default function Home() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Envía remesas a{' '}
+              Compara tasas de cambio en{' '}
               <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
-                Sudamérica
+                Latinoamérica
               </span>{' '}
-              con la mejor tasa
+              y encuentra la mejor
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Compara en tiempo real las tasas de cambio de servicios de remesas en 13 países.
-              Ahorra hasta 8% en cada envío. 100% seguro y transparente.
+              Comparamos en tiempo real las tasas de 60+ casas de cambio y servicios en 13 países.
+              Te mostramos dónde conseguir la mejor tasa. 100% transparente.
             </p>
+            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+              </svg>
+              Solo comparamos tasas - No procesamos transacciones
+            </div>
             <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
               <span>🇦🇷 🇧🇴 🇧🇷 🇨🇱 🇨🇴 🇪🇨 🇬🇾 🇵🇦 🇵🇾 🇵🇪 🇸🇷 🇺🇾 🇻🇪 🇺🇸</span>
             </div>
@@ -86,29 +92,29 @@ export default function Home() {
                 href="/calculadora"
                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition shadow-lg hover:shadow-xl text-center"
               >
-                Calcular Ahora
+                Comparar Tasas Ahora
               </a>
               <a
-                href="/calculadora"
+                href="/dashboard"
                 className="border-2 border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-full font-semibold text-lg transition text-center"
               >
-                Ver Demo
+                Crear Alertas
               </a>
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 mt-12">
               <div>
-                <div className="text-3xl font-bold text-gray-900">8+</div>
-                <div className="text-sm text-gray-600">Servicios</div>
+                <div className="text-3xl font-bold text-gray-900">60+</div>
+                <div className="text-sm text-gray-600">Casas de Cambio</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-gray-900">24/7</div>
-                <div className="text-sm text-gray-600">Actualización</div>
+                <div className="text-sm text-gray-600">Comparación</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-gray-900">0%</div>
-                <div className="text-sm text-gray-600">Comisión</div>
+                <div className="text-3xl font-bold text-gray-900">100%</div>
+                <div className="text-sm text-gray-600">Gratis</div>
               </div>
             </div>
           </motion.div>
@@ -181,10 +187,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              ¿Por qué Reme Global?
+              ¿Por qué REME LAT-USA?
             </h2>
             <p className="text-xl text-gray-600">
-              La forma más inteligente de enviar dinero a Venezuela
+              El comparador más completo de tasas de cambio en Latinoamérica
             </p>
           </div>
 
@@ -192,33 +198,33 @@ export default function Home() {
             {[
               {
                 icon: <TrendingUp className="w-8 h-8" />,
-                title: 'Mejor Tasa Garantizada',
-                description: 'Comparamos 8+ servicios en tiempo real para que siempre obtengas el mejor precio'
+                title: 'Comparación Completa',
+                description: 'Comparamos 60+ casas de cambio en tiempo real para mostrarte la mejor tasa'
               },
               {
                 icon: <Clock className="w-8 h-8" />,
-                title: 'Entrega Rápida',
-                description: 'Desde 5 minutos hasta tu cuenta. Sin esperas innecesarias'
+                title: 'Información Actualizada',
+                description: 'Tasas actualizadas 24/7 para que tomes decisiones informadas'
               },
               {
                 icon: <Shield className="w-8 h-8" />,
-                title: '100% Seguro',
-                description: 'Solo trabajamos con servicios verificados y legales'
+                title: 'Solo Información',
+                description: 'No procesamos transacciones. Te redirigimos a servicios verificados'
               },
               {
                 icon: <Zap className="w-8 h-8" />,
-                title: 'Sin Comisiones Ocultas',
-                description: 'Transparencia total. Sabes exactamente cuánto llega'
+                title: 'Transparencia Total',
+                description: 'Te mostramos exactamente qué tasa ofrece cada casa de cambio'
               },
               {
                 icon: <DollarSign className="w-8 h-8" />,
-                title: 'Ahorra hasta 8%',
-                description: 'En cada envío comparado con servicios tradicionales'
+                title: 'Encuentra la Mejor Tasa',
+                description: 'La diferencia entre servicios puede ser hasta 8%'
               },
               {
                 icon: <Users className="w-8 h-8" />,
-                title: 'Miles Confían en Nosotros',
-                description: 'Únete a la comunidad de venezolanos que ahorran'
+                title: 'Plataforma Gratuita',
+                description: 'Comparación 100% gratuita. Gana tú, no nosotros'
               }
             ].map((feature, index) => (
               <motion.div
@@ -242,16 +248,16 @@ export default function Home() {
       <section className="bg-gradient-to-r from-blue-600 to-green-600 py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">
-            Comienza a Ahorrar Hoy
+            Encuentra la Mejor Tasa Hoy
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Únete a miles de venezolanos que ya están ahorrando en cada envío
+            Compara tasas en segundos y toma decisiones informadas
           </p>
           <a
             href="/calculadora"
             className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-full font-bold text-lg transition shadow-lg hover:shadow-xl inline-block"
           >
-            Calcular Mi Primera Remesa
+            Comparar Tasas Ahora
           </a>
         </div>
       </section>
@@ -263,10 +269,10 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <DollarSign className="w-6 h-6" />
-                <span className="text-xl font-bold">Reme Global</span>
+                <span className="text-xl font-bold">REME LAT-USA</span>
               </div>
               <p className="text-gray-400">
-                La mejor forma de enviar dinero a Venezuela
+                Comparador de tasas de cambio en Latinoamérica
               </p>
             </div>
             <div>
@@ -294,9 +300,9 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Reme Global. Todos los derechos reservados.</p>
+            <p>&copy; 2025 REME LAT-USA. Todos los derechos reservados.</p>
             <p className="mt-2 text-sm">
-              No procesamos transacciones. Comparamos y redirigimos a servicios legales.
+              No procesamos transacciones. Solo comparamos tasas y redirigimos a casas de cambio verificadas.
             </p>
           </div>
         </div>
