@@ -1,0 +1,975 @@
+/**
+ * MIDDLE EAST, OCEANIA & AFRICA FINANCIAL INSTITUTIONS DATABASE
+ * Medio Oriente: EAU, Arabia Saudita, Qatar, Israel
+ * Oceanía: Australia, Nueva Zelanda
+ * África: Sudáfrica, Nigeria, Egipto
+ */
+
+import { Bank, ExchangeHouse, FinancialDistrict } from '@/types/financial-system'
+
+// ==========================================
+// 🇦🇪 UNITED ARAB EMIRATES
+// ==========================================
+
+export const UAE_BANKS: Bank[] = [
+  {
+    id: 'emirates-nbd-ae',
+    name: 'Emirates NBD',
+    tier: 'tier2',
+    country: 'AE',
+    type: 'internacional',
+    swift: 'EBILAEAD',
+    website: 'https://www.emiratesnbd.com',
+    phone: '+971 4-316-0316',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 230,
+    locations: [
+      {
+        city: 'Dubai',
+        district: 'DIFC',
+        address: 'Emirates NBD Tower, Sheikh Zayed Road, Dubai',
+        coordinates: { lat: 25.2048, lng: 55.2708 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'private_banking'],
+        hours: 'D-J 08:00-14:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 15, international: 50 }
+    },
+    hours: 'D-J 08:00-14:00'
+  },
+  {
+    id: 'first-abu-dhabi-ae',
+    name: 'First Abu Dhabi Bank (FAB)',
+    tier: 'tier1',
+    country: 'AE',
+    type: 'internacional',
+    swift: 'NBADAEAA',
+    website: 'https://www.bankfab.com',
+    phone: '+971 2-691-9999',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 185,
+    locations: [
+      {
+        city: 'Abu Dhabi',
+        district: 'Al Maryah Island',
+        address: 'FAB Tower, Al Maryah Island, Abu Dhabi',
+        coordinates: { lat: 24.5021, lng: 54.3913 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'private_banking'],
+        hours: 'D-J 08:00-14:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.3, max: 1.5 },
+      transferFee: { domestic: 10, international: 45 }
+    },
+    hours: 'D-J 08:00-14:00'
+  },
+  {
+    id: 'adcb-ae',
+    name: 'Abu Dhabi Commercial Bank (ADCB)',
+    tier: 'tier2',
+    country: 'AE',
+    type: 'nacional',
+    swift: 'ADCBAEAA',
+    website: 'https://www.adcb.com',
+    phone: '+971 2-696-2222',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 52,
+    locations: [
+      {
+        city: 'Abu Dhabi',
+        district: 'Corniche',
+        address: 'ADCB Building, Al Salam Street, Abu Dhabi',
+        coordinates: { lat: 24.4919, lng: 54.3752 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'retail'],
+        hours: 'D-J 08:00-14:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 15, international: 50 }
+    },
+    hours: 'D-J 08:00-14:00'
+  }
+]
+
+export const UAE_EXCHANGE_HOUSES: ExchangeHouse[] = [
+  {
+    id: 'uae-exchange-ae',
+    name: 'UAE Exchange',
+    country: 'AE',
+    established: 1980,
+    phone: '+971 4-397-9444',
+    website: 'https://www.uaeexchange.com',
+    locations: [
+      {
+        city: 'Dubai',
+        district: 'Deira',
+        address: 'Al Rigga, Dubai',
+        coordinates: { lat: 25.2654, lng: 55.3167 },
+        type: 'branch',
+        services: ['cash_exchange', 'wire_transfer', 'delivery'],
+        hours: 'S-J 08:00-22:00'
+      }
+    ],
+    currencies: ['AED', 'USD', 'EUR', 'GBP', 'INR', 'PKR', 'PHP', 'SAR', 'QAR'],
+    commission: { min: 0, max: 0 },
+    spread: { min: 0.5, max: 2 },
+    hours: 'S-J 08:00-22:00',
+    rating: 4.5
+  },
+  {
+    id: 'al-ansari-ae',
+    name: 'Al Ansari Exchange',
+    country: 'AE',
+    established: 1966,
+    phone: '+971 800-26-7274',
+    website: 'https://www.alansariexchange.com',
+    locations: [
+      {
+        city: 'Dubai',
+        district: 'Multiple Locations',
+        address: 'Over 200 branches across UAE',
+        type: 'branch',
+        services: ['cash_exchange', 'wire_transfer', 'delivery'],
+        hours: 'S-J 08:00-22:00'
+      }
+    ],
+    currencies: ['AED', 'USD', 'EUR', 'GBP', 'INR', 'PKR', 'PHP', 'BDT', 'LKR'],
+    commission: { min: 0, max: 0 },
+    spread: { min: 0.5, max: 1.5 },
+    hours: 'S-J 08:00-22:00',
+    rating: 4.7
+  }
+]
+
+export const UAE_FINANCIAL_DISTRICTS: FinancialDistrict[] = [
+  {
+    country: 'AE',
+    city: 'Dubai',
+    name: 'Dubai International Financial Centre (DIFC)',
+    description: 'Centro financiero líder de Medio Oriente',
+    coordinates: { lat: 25.2124, lng: 55.2796 },
+    banks: 95,
+    exchangeHouses: 68,
+    corporateOffices: 520,
+    tier: 1,
+    businessHours: 'D-J 08:00-18:00',
+    accessibility: 'Metro: Financial Centre (Red Line)',
+    majorInstitutions: ['DIFC Authority', 'NASDAQ Dubai', 'Emirates NBD', 'Standard Chartered']
+  },
+  {
+    country: 'AE',
+    city: 'Abu Dhabi',
+    name: 'Al Maryah Island',
+    description: 'Centro financiero global de Abu Dhabi',
+    coordinates: { lat: 24.5021, lng: 54.3913 },
+    banks: 42,
+    exchangeHouses: 28,
+    corporateOffices: 280,
+    tier: 1,
+    businessHours: 'D-J 08:00-18:00',
+    accessibility: 'Connected by bridges to mainland',
+    majorInstitutions: ['ADGM', 'FAB', 'Mubadala', 'ADX']
+  }
+]
+
+// ==========================================
+// 🇸🇦 SAUDI ARABIA
+// ==========================================
+
+export const SAUDI_ARABIA_BANKS: Bank[] = [
+  {
+    id: 'ncb-sa',
+    name: 'National Commercial Bank (NCB)',
+    tier: 'tier2',
+    country: 'SA',
+    type: 'nacional',
+    swift: 'NCBKSAJE',
+    website: 'https://www.alahli.com',
+    phone: '+966 920-001-000',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 395,
+    locations: [
+      {
+        city: 'Jeddah',
+        district: 'King Abdulaziz Road',
+        address: 'King Abdulaziz Road, Jeddah 21411',
+        coordinates: { lat: 21.5433, lng: 39.1728 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'retail'],
+        hours: 'D-J 09:00-16:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 20, international: 60 }
+    },
+    hours: 'D-J 09:00-16:00'
+  },
+  {
+    id: 'alrajhi-sa',
+    name: 'Al Rajhi Bank',
+    tier: 'tier2',
+    country: 'SA',
+    type: 'nacional',
+    swift: 'RJHISARI',
+    website: 'https://www.alrajhibank.com.sa',
+    phone: '+966 920-003-344',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 567,
+    locations: [
+      {
+        city: 'Riyadh',
+        district: 'Olaya',
+        address: 'King Fahd Road, Riyadh 11411',
+        coordinates: { lat: 24.7136, lng: 46.6753 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'retail'],
+        hours: 'D-J 09:00-16:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 15, international: 50 }
+    },
+    hours: 'D-J 09:00-16:00'
+  }
+]
+
+export const SAUDI_ARABIA_EXCHANGE_HOUSES: ExchangeHouse[] = [
+  {
+    id: 'enjaz-sa',
+    name: 'Enjaz Banking Services',
+    country: 'SA',
+    established: 2007,
+    phone: '+966 920-000-307',
+    website: 'https://www.enjazbanking.com',
+    locations: [
+      {
+        city: 'Riyadh',
+        district: 'Multiple Locations',
+        address: 'Multiple branches across KSA',
+        type: 'branch',
+        services: ['cash_exchange', 'wire_transfer'],
+        hours: 'S-J 09:00-21:00'
+      }
+    ],
+    currencies: ['SAR', 'USD', 'EUR', 'GBP', 'INR', 'PKR', 'EGP', 'PHP'],
+    commission: { min: 0.5, max: 2 },
+    spread: { min: 1, max: 3 },
+    hours: 'S-J 09:00-21:00',
+    rating: 4.3
+  }
+]
+
+export const SAUDI_ARABIA_FINANCIAL_DISTRICTS: FinancialDistrict[] = [
+  {
+    country: 'SA',
+    city: 'Riyadh',
+    name: 'King Abdullah Financial District (KAFD)',
+    description: 'Megaproyecto financiero de Arabia Saudita',
+    coordinates: { lat: 24.7614, lng: 46.6428 },
+    banks: 58,
+    exchangeHouses: 22,
+    corporateOffices: 420,
+    tier: 1,
+    businessHours: 'D-J 09:00-16:00',
+    accessibility: 'Metro: KAFD Station (under construction)',
+    majorInstitutions: ['SAMA', 'Tadawul', 'NCB', 'Al Rajhi', 'PIF']
+  }
+]
+
+// ==========================================
+// 🇶🇦 QATAR
+// ==========================================
+
+export const QATAR_BANKS: Bank[] = [
+  {
+    id: 'qnb-qa',
+    name: 'Qatar National Bank (QNB)',
+    tier: 'tier2',
+    country: 'QA',
+    type: 'internacional',
+    swift: 'QNBAQAQA',
+    website: 'https://www.qnb.com',
+    phone: '+974 4440-7407',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 1000,
+    locations: [
+      {
+        city: 'Doha',
+        district: 'West Bay',
+        address: 'QNB Tower, Abdullah Bin Jassim Street, Doha',
+        coordinates: { lat: 25.3206, lng: 51.5310 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'private_banking'],
+        hours: 'D-J 08:00-14:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 15, international: 50 }
+    },
+    hours: 'D-J 08:00-14:00'
+  }
+]
+
+export const QATAR_EXCHANGE_HOUSES: ExchangeHouse[] = [
+  {
+    id: 'al-fardan-qa',
+    name: 'Al Fardan Exchange',
+    country: 'QA',
+    established: 1985,
+    phone: '+974 4443-3311',
+    website: 'https://www.alfardanexchange.com',
+    locations: [
+      {
+        city: 'Doha',
+        district: 'Souq Waqif',
+        address: 'Souq Waqif, Doha',
+        coordinates: { lat: 25.2867, lng: 51.5333 },
+        type: 'branch',
+        services: ['cash_exchange', 'wire_transfer'],
+        hours: 'S-J 08:00-22:00'
+      }
+    ],
+    currencies: ['QAR', 'USD', 'EUR', 'GBP', 'INR', 'PKR', 'PHP', 'SAR', 'AED'],
+    commission: { min: 0, max: 0 },
+    spread: { min: 0.5, max: 2 },
+    hours: 'S-J 08:00-22:00',
+    rating: 4.6
+  }
+]
+
+export const QATAR_FINANCIAL_DISTRICTS: FinancialDistrict[] = [
+  {
+    country: 'QA',
+    city: 'Doha',
+    name: 'West Bay',
+    description: 'Distrito financiero de Qatar',
+    coordinates: { lat: 25.3206, lng: 51.5310 },
+    banks: 38,
+    exchangeHouses: 25,
+    corporateOffices: 280,
+    tier: 1,
+    businessHours: 'D-J 08:00-18:00',
+    accessibility: 'Metro: West Bay, Corniche',
+    majorInstitutions: ['QNB', 'Qatar Stock Exchange', 'Qatar Investment Authority']
+  }
+]
+
+// ==========================================
+// 🇮🇱 ISRAEL
+// ==========================================
+
+export const ISRAEL_BANKS: Bank[] = [
+  {
+    id: 'hapoalim-il',
+    name: 'Bank Hapoalim',
+    tier: 'tier2',
+    country: 'IL',
+    type: 'nacional',
+    swift: 'POALILIT',
+    website: 'https://www.bankhapoalim.com',
+    phone: '+972 3-567-3333',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 255,
+    locations: [
+      {
+        city: 'Tel Aviv',
+        district: 'Rothschild Boulevard',
+        address: '50 Rothschild Boulevard, Tel Aviv 66883',
+        coordinates: { lat: 32.0634, lng: 34.7723 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'retail'],
+        hours: 'D-J 08:30-13:15'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 3 },
+      transferFee: { domestic: 20, international: 60 }
+    },
+    hours: 'D-J 08:30-13:15'
+  },
+  {
+    id: 'leumi-il',
+    name: 'Bank Leumi',
+    tier: 'tier2',
+    country: 'IL',
+    type: 'internacional',
+    swift: 'LUMIILITXXX',
+    website: 'https://www.leumi.co.il',
+    phone: '+972 3-514-1111',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 235,
+    locations: [
+      {
+        city: 'Tel Aviv',
+        district: 'HaYarkon Street',
+        address: '24-32 Yehuda Halevi Street, Tel Aviv',
+        coordinates: { lat: 32.0673, lng: 34.7718 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'retail'],
+        hours: 'D-J 08:30-13:15'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 3 },
+      transferFee: { domestic: 20, international: 60 }
+    },
+    hours: 'D-J 08:30-13:15'
+  }
+]
+
+export const ISRAEL_EXCHANGE_HOUSES: ExchangeHouse[] = [
+  {
+    id: 'change-place-il',
+    name: 'Change Place',
+    country: 'IL',
+    established: 1995,
+    phone: '+972 3-510-0000',
+    website: 'https://www.changeplace.co.il',
+    locations: [
+      {
+        city: 'Tel Aviv',
+        district: 'Ben Yehuda',
+        address: 'Ben Yehuda Street, Tel Aviv',
+        coordinates: { lat: 32.0809, lng: 34.7740 },
+        type: 'branch',
+        services: ['cash_exchange'],
+        hours: 'D-J 09:00-19:00'
+      }
+    ],
+    currencies: ['ILS', 'USD', 'EUR', 'GBP', 'CHF', 'RUB'],
+    commission: { min: 1, max: 3 },
+    spread: { min: 2, max: 4 },
+    hours: 'D-J 09:00-19:00',
+    rating: 4.1
+  }
+]
+
+export const ISRAEL_FINANCIAL_DISTRICTS: FinancialDistrict[] = [
+  {
+    country: 'IL',
+    city: 'Tel Aviv',
+    name: 'Rothschild Boulevard',
+    description: 'Centro financiero de Israel',
+    coordinates: { lat: 32.0634, lng: 34.7723 },
+    banks: 42,
+    exchangeHouses: 18,
+    corporateOffices: 320,
+    tier: 1,
+    businessHours: 'D-J 08:30-17:00',
+    accessibility: 'Light Rail: Rothschild, Red Line',
+    majorInstitutions: ['Bank of Israel', 'Tel Aviv Stock Exchange', 'Bank Hapoalim', 'Bank Leumi']
+  }
+]
+
+// ==========================================
+// 🇦🇺 AUSTRALIA
+// ==========================================
+
+export const AUSTRALIA_BANKS: Bank[] = [
+  {
+    id: 'cba-au',
+    name: 'Commonwealth Bank of Australia (CBA)',
+    tier: 'tier2',
+    country: 'AU',
+    type: 'nacional',
+    swift: 'CTBAAU2S',
+    website: 'https://www.commbank.com.au',
+    phone: '+61 2-9378-2000',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 1100,
+    locations: [
+      {
+        city: 'Sydney',
+        district: 'Darling Quarter',
+        address: 'Tower 1, 201 Sussex Street, Sydney NSW 2000',
+        coordinates: { lat: -33.8688, lng: 151.2093 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'retail'],
+        hours: 'L-V 09:30-16:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 3 },
+      transferFee: { domestic: 10, international: 30 }
+    },
+    hours: 'L-V 09:30-16:00'
+  },
+  {
+    id: 'westpac-au',
+    name: 'Westpac Banking Corporation',
+    tier: 'tier2',
+    country: 'AU',
+    type: 'internacional',
+    swift: 'WPACAU2S',
+    website: 'https://www.westpac.com.au',
+    phone: '+61 2-9293-9270',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 850,
+    locations: [
+      {
+        city: 'Sydney',
+        district: 'CBD',
+        address: '275 Kent Street, Sydney NSW 2000',
+        coordinates: { lat: -33.8655, lng: 151.2058 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'retail'],
+        hours: 'L-V 09:30-16:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 3 },
+      transferFee: { domestic: 10, international: 30 }
+    },
+    hours: 'L-V 09:30-16:00'
+  },
+  {
+    id: 'anz-au',
+    name: 'ANZ (Australia and New Zealand Banking Group)',
+    tier: 'tier2',
+    country: 'AU',
+    type: 'internacional',
+    swift: 'ANZBAU3M',
+    website: 'https://www.anz.com.au',
+    phone: '+61 3-9273-5555',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 680,
+    locations: [
+      {
+        city: 'Melbourne',
+        district: 'Docklands',
+        address: '833 Collins Street, Docklands VIC 3008',
+        coordinates: { lat: -37.8176, lng: 144.9537 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'retail'],
+        hours: 'L-V 09:30-16:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 3 },
+      transferFee: { domestic: 10, international: 32 }
+    },
+    hours: 'L-V 09:30-16:00'
+  },
+  {
+    id: 'nab-au',
+    name: 'National Australia Bank (NAB)',
+    tier: 'tier2',
+    country: 'AU',
+    type: 'nacional',
+    swift: 'NATAAU33',
+    website: 'https://www.nab.com.au',
+    phone: '+61 3-8872-6000',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 720,
+    locations: [
+      {
+        city: 'Melbourne',
+        district: 'Docklands',
+        address: '800 Bourke Street, Docklands VIC 3008',
+        coordinates: { lat: -37.8162, lng: 144.9500 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'retail'],
+        hours: 'L-V 09:30-16:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 3 },
+      transferFee: { domestic: 10, international: 30 }
+    },
+    hours: 'L-V 09:30-16:00'
+  }
+]
+
+export const AUSTRALIA_EXCHANGE_HOUSES: ExchangeHouse[] = [
+  {
+    id: 'ofx-au',
+    name: 'OFX (formerly OzForex)',
+    country: 'AU',
+    established: 1998,
+    phone: '+61 2-8667-8000',
+    website: 'https://www.ofx.com',
+    locations: [
+      {
+        city: 'Sydney',
+        district: 'Online',
+        address: 'Online Platform',
+        type: 'headquarters',
+        services: ['wire_transfer', 'online_exchange'],
+        hours: '24/7 Online'
+      }
+    ],
+    currencies: ['AUD', 'USD', 'EUR', 'GBP', 'NZD', 'CAD', 'JPY', 'SGD', 'HKD'],
+    commission: { min: 0, max: 0 },
+    spread: { min: 0.5, max: 1.5 },
+    hours: '24/7 Online',
+    rating: 4.7
+  }
+]
+
+export const AUSTRALIA_FINANCIAL_DISTRICTS: FinancialDistrict[] = [
+  {
+    country: 'AU',
+    city: 'Sydney',
+    name: 'Sydney CBD',
+    description: 'Centro financiero principal de Australia',
+    coordinates: { lat: -33.8688, lng: 151.2093 },
+    banks: 78,
+    exchangeHouses: 32,
+    corporateOffices: 520,
+    tier: 1,
+    businessHours: 'L-V 09:30-16:00',
+    accessibility: 'Train: Town Hall, Wynyard, Martin Place',
+    majorInstitutions: ['RBA', 'ASX', 'CBA', 'Westpac', 'Macquarie']
+  },
+  {
+    country: 'AU',
+    city: 'Melbourne',
+    name: 'Melbourne Docklands',
+    description: 'Segundo centro financiero de Australia',
+    coordinates: { lat: -37.8162, lng: 144.9500 },
+    banks: 52,
+    exchangeHouses: 22,
+    corporateOffices: 380,
+    tier: 2,
+    businessHours: 'L-V 09:30-16:00',
+    accessibility: 'Tram: Collins Street, Southern Cross',
+    majorInstitutions: ['ANZ', 'NAB', 'BHP']
+  }
+]
+
+// ==========================================
+// 🇳🇿 NEW ZEALAND
+// ==========================================
+
+export const NEW_ZEALAND_BANKS: Bank[] = [
+  {
+    id: 'anz-nz',
+    name: 'ANZ Bank New Zealand',
+    tier: 'tier3',
+    country: 'NZ',
+    type: 'nacional',
+    swift: 'ANZBNZ22',
+    website: 'https://www.anz.co.nz',
+    phone: '+64 9-252-6000',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 265,
+    locations: [
+      {
+        city: 'Auckland',
+        district: 'CBD',
+        address: '23-29 Albert Street, Auckland 1010',
+        coordinates: { lat: -36.8485, lng: 174.7633 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'retail'],
+        hours: 'L-V 09:00-16:30'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 3 },
+      transferFee: { domestic: 10, international: 25 }
+    },
+    hours: 'L-V 09:00-16:30'
+  },
+  {
+    id: 'westpac-nz',
+    name: 'Westpac New Zealand',
+    tier: 'tier3',
+    country: 'NZ',
+    type: 'nacional',
+    swift: 'WPACNZ2W',
+    website: 'https://www.westpac.co.nz',
+    phone: '+64 9-336-3500',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 180,
+    locations: [
+      {
+        city: 'Auckland',
+        district: 'CBD',
+        address: 'Westpac on Takutai Square, Auckland 1010',
+        coordinates: { lat: -36.8447, lng: 174.7633 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'retail'],
+        hours: 'L-V 09:00-16:30'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1.5, max: 3.5 },
+      transferFee: { domestic: 12, international: 28 }
+    },
+    hours: 'L-V 09:00-16:30'
+  }
+]
+
+export const NEW_ZEALAND_EXCHANGE_HOUSES: ExchangeHouse[] = [
+  {
+    id: 'nzforex-nz',
+    name: 'NZForex',
+    country: 'NZ',
+    established: 2004,
+    phone: '+64 9-353-1450',
+    website: 'https://www.nzforex.co.nz',
+    locations: [
+      {
+        city: 'Auckland',
+        district: 'Online',
+        address: 'Online Platform',
+        type: 'headquarters',
+        services: ['wire_transfer', 'online_exchange'],
+        hours: '24/7 Online'
+      }
+    ],
+    currencies: ['NZD', 'AUD', 'USD', 'EUR', 'GBP', 'CAD', 'JPY', 'CHF'],
+    commission: { min: 0, max: 0 },
+    spread: { min: 0.5, max: 1.5 },
+    hours: '24/7 Online',
+    rating: 4.6
+  }
+]
+
+export const NEW_ZEALAND_FINANCIAL_DISTRICTS: FinancialDistrict[] = [
+  {
+    country: 'NZ',
+    city: 'Auckland',
+    name: 'Auckland CBD',
+    description: 'Centro financiero de Nueva Zelanda',
+    coordinates: { lat: -36.8485, lng: 174.7633 },
+    banks: 32,
+    exchangeHouses: 18,
+    corporateOffices: 220,
+    tier: 2,
+    businessHours: 'L-V 09:00-16:30',
+    accessibility: 'Train: Britomart, Bus: Multiple routes',
+    majorInstitutions: ['RBNZ', 'NZX', 'ANZ', 'Westpac']
+  }
+]
+
+// ==========================================
+// 🇿🇦 SOUTH AFRICA
+// ==========================================
+
+export const SOUTH_AFRICA_BANKS: Bank[] = [
+  {
+    id: 'standard-za',
+    name: 'Standard Bank',
+    tier: 'tier2',
+    country: 'ZA',
+    type: 'internacional',
+    swift: 'SBZAZAJJ',
+    website: 'https://www.standardbank.co.za',
+    phone: '+27 11-636-9111',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 640,
+    locations: [
+      {
+        city: 'Johannesburg',
+        district: 'Rosebank',
+        address: '30 Baker Street, Rosebank, Johannesburg 2196',
+        coordinates: { lat: -26.1476, lng: 28.0411 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'retail'],
+        hours: 'L-V 08:30-15:30, S 08:30-11:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 3 },
+      transferFee: { domestic: 50, international: 150 }
+    },
+    hours: 'L-V 08:30-15:30, S 08:30-11:00'
+  },
+  {
+    id: 'absa-za',
+    name: 'Absa Group (formerly Barclays Africa)',
+    tier: 'tier2',
+    country: 'ZA',
+    type: 'nacional',
+    swift: 'ABSAZAJJ',
+    website: 'https://www.absa.co.za',
+    phone: '+27 11-350-4000',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 750,
+    locations: [
+      {
+        city: 'Johannesburg',
+        district: 'CBD',
+        address: 'Absa Towers, 170 Main Street, Johannesburg 2001',
+        coordinates: { lat: -26.2041, lng: 28.0473 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'retail'],
+        hours: 'L-V 08:30-15:30'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1.5, max: 3.5 },
+      transferFee: { domestic: 50, international: 150 }
+    },
+    hours: 'L-V 08:30-15:30, S 08:30-11:00'
+  },
+  {
+    id: 'fnb-za',
+    name: 'First National Bank (FNB)',
+    tier: 'tier2',
+    country: 'ZA',
+    type: 'nacional',
+    swift: 'FIRNZAJJ',
+    website: 'https://www.fnb.co.za',
+    phone: '+27 87-575-9404',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 680,
+    locations: [
+      {
+        city: 'Johannesburg',
+        district: 'Sandton',
+        address: 'FNB Towers, 1 First Place, Sandton 2196',
+        coordinates: { lat: -26.1076, lng: 28.0567 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'retail'],
+        hours: 'L-V 08:30-15:30'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 3 },
+      transferFee: { domestic: 50, international: 140 }
+    },
+    hours: 'L-V 08:30-15:30, S 08:30-11:00'
+  }
+]
+
+export const SOUTH_AFRICA_EXCHANGE_HOUSES: ExchangeHouse[] = [
+  {
+    id: 'bidvest-za',
+    name: 'Bidvest Bank Foreign Exchange',
+    country: 'ZA',
+    established: 1998,
+    phone: '+27 11-286-9100',
+    website: 'https://www.bidvestbank.co.za',
+    locations: [
+      {
+        city: 'Johannesburg',
+        district: 'OR Tambo Airport',
+        address: 'OR Tambo International Airport',
+        coordinates: { lat: -26.1367, lng: 28.2411 },
+        type: 'branch',
+        services: ['cash_exchange', 'wire_transfer'],
+        hours: 'L-D 05:00-22:00'
+      }
+    ],
+    currencies: ['ZAR', 'USD', 'EUR', 'GBP', 'AUD', 'CHF', 'JPY'],
+    commission: { min: 1, max: 3 },
+    spread: { min: 2, max: 5 },
+    hours: 'Varía por ubicación',
+    rating: 4.2
+  }
+]
+
+export const SOUTH_AFRICA_FINANCIAL_DISTRICTS: FinancialDistrict[] = [
+  {
+    country: 'ZA',
+    city: 'Johannesburg',
+    name: 'Sandton',
+    description: 'Centro financiero de África',
+    coordinates: { lat: -26.1076, lng: 28.0567 },
+    banks: 68,
+    exchangeHouses: 28,
+    corporateOffices: 480,
+    tier: 1,
+    businessHours: 'L-V 08:30-15:30',
+    accessibility: 'Gautrain: Sandton Station',
+    majorInstitutions: ['JSE', 'Standard Bank', 'FNB', 'SARB', 'Absa']
+  }
+]
+
+// ==========================================
+// EXPORTAR TODO
+// ==========================================
+
+export const MIDDLE_EAST_BANKS = [
+  ...UAE_BANKS,
+  ...SAUDI_ARABIA_BANKS,
+  ...QATAR_BANKS,
+  ...ISRAEL_BANKS
+]
+
+export const MIDDLE_EAST_EXCHANGE_HOUSES = [
+  ...UAE_EXCHANGE_HOUSES,
+  ...SAUDI_ARABIA_EXCHANGE_HOUSES,
+  ...QATAR_EXCHANGE_HOUSES,
+  ...ISRAEL_EXCHANGE_HOUSES
+]
+
+export const MIDDLE_EAST_FINANCIAL_DISTRICTS = [
+  ...UAE_FINANCIAL_DISTRICTS,
+  ...SAUDI_ARABIA_FINANCIAL_DISTRICTS,
+  ...QATAR_FINANCIAL_DISTRICTS,
+  ...ISRAEL_FINANCIAL_DISTRICTS
+]
+
+export const OCEANIA_BANKS = [
+  ...AUSTRALIA_BANKS,
+  ...NEW_ZEALAND_BANKS
+]
+
+export const OCEANIA_EXCHANGE_HOUSES = [
+  ...AUSTRALIA_EXCHANGE_HOUSES,
+  ...NEW_ZEALAND_EXCHANGE_HOUSES
+]
+
+export const OCEANIA_FINANCIAL_DISTRICTS = [
+  ...AUSTRALIA_FINANCIAL_DISTRICTS,
+  ...NEW_ZEALAND_FINANCIAL_DISTRICTS
+]
+
+export const AFRICA_BANKS = [
+  ...SOUTH_AFRICA_BANKS
+]
+
+export const AFRICA_EXCHANGE_HOUSES = [
+  ...SOUTH_AFRICA_EXCHANGE_HOUSES
+]
+
+export const AFRICA_FINANCIAL_DISTRICTS = [
+  ...SOUTH_AFRICA_FINANCIAL_DISTRICTS
+]

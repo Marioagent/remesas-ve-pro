@@ -1,0 +1,887 @@
+/**
+ * ASIA FINANCIAL INSTITUTIONS DATABASE
+ * China, Japón, India, Singapur, Hong Kong, Corea del Sur
+ * Sistema Financiero Completo Asiático
+ */
+
+import { Bank, ExchangeHouse, FinancialDistrict } from '@/types/financial-system'
+
+// ==========================================
+// 🇨🇳 CHINA
+// ==========================================
+
+export const CHINA_BANKS: Bank[] = [
+  {
+    id: 'icbc-cn',
+    name: 'Industrial and Commercial Bank of China (ICBC)',
+    tier: 'tier1',
+    country: 'CN',
+    type: 'internacional',
+    swift: 'ICBKCNBJ',
+    website: 'https://www.icbc.com.cn',
+    phone: '+86 10-6641-0114',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 16400,
+    locations: [
+      {
+        city: 'Beijing',
+        district: 'Financial Street',
+        address: '55 Fuxingmennei Avenue, Beijing 100140',
+        coordinates: { lat: 39.9042, lng: 116.4074 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'retail'],
+        hours: 'L-V 09:00-17:00'
+      },
+      {
+        city: 'Shanghai',
+        district: 'Pudong',
+        address: 'Shanghai International Financial Center',
+        type: 'branch',
+        services: ['forex', 'corporate', 'investment'],
+        hours: 'L-V 09:00-17:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 15, international: 50 }
+    },
+    hours: 'L-V 09:00-17:00, S-D 09:00-16:00'
+  },
+  {
+    id: 'ccb-cn',
+    name: 'China Construction Bank',
+    tier: 'tier1',
+    country: 'CN',
+    type: 'internacional',
+    swift: 'PCBCCNBJ',
+    website: 'https://www.ccb.com',
+    phone: '+86 10-6762-5114',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 14650,
+    locations: [
+      {
+        city: 'Beijing',
+        district: 'Financial Street',
+        address: '25 Financial Street, Beijing 100033',
+        coordinates: { lat: 39.9133, lng: 116.3564 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'retail'],
+        hours: 'L-V 09:00-17:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 15, international: 50 }
+    },
+    hours: 'L-V 09:00-17:00'
+  },
+  {
+    id: 'boc-cn',
+    name: 'Bank of China',
+    tier: 'tier1',
+    country: 'CN',
+    type: 'internacional',
+    swift: 'BKCHCNBJ',
+    website: 'https://www.boc.cn',
+    phone: '+86 10-6659-6688',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 11600,
+    locations: [
+      {
+        city: 'Beijing',
+        district: 'Xicheng',
+        address: '1 Fuxingmen Nei Dajie, Beijing 100818',
+        coordinates: { lat: 39.9130, lng: 116.3564 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'private_banking'],
+        hours: 'L-V 09:00-17:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 15, international: 50 }
+    },
+    hours: 'L-V 09:00-17:00'
+  },
+  {
+    id: 'abc-cn',
+    name: 'Agricultural Bank of China',
+    tier: 'tier1',
+    country: 'CN',
+    type: 'nacional',
+    swift: 'ABOCCNBJ',
+    website: 'https://www.abchina.com',
+    phone: '+86 10-8510-9999',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 23600,
+    locations: [
+      {
+        city: 'Beijing',
+        district: 'Dongcheng',
+        address: '69 Jianguomennei Avenue, Beijing 100005',
+        coordinates: { lat: 39.9075, lng: 116.4158 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'retail'],
+        hours: 'L-V 09:00-17:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 10, international: 45 }
+    },
+    hours: 'L-V 09:00-17:00'
+  }
+]
+
+export const CHINA_EXCHANGE_HOUSES: ExchangeHouse[] = [
+  {
+    id: 'boc-exchange-cn',
+    name: 'Bank of China Currency Exchange',
+    country: 'CN',
+    established: 1912,
+    phone: '+86 10-6659-6688',
+    website: 'https://www.boc.cn',
+    locations: [
+      {
+        city: 'Beijing',
+        district: 'Capital Airport',
+        address: 'Beijing Capital International Airport T3',
+        coordinates: { lat: 40.0799, lng: 116.6031 },
+        type: 'branch',
+        services: ['cash_exchange'],
+        hours: 'L-D 07:00-23:00'
+      }
+    ],
+    currencies: ['CNY', 'USD', 'EUR', 'JPY', 'GBP', 'HKD', 'KRW', 'SGD'],
+    commission: { min: 0.5, max: 2 },
+    spread: { min: 1, max: 3 },
+    hours: 'Varía por ubicación',
+    rating: 4.3
+  }
+]
+
+export const CHINA_FINANCIAL_DISTRICTS: FinancialDistrict[] = [
+  {
+    country: 'CN',
+    city: 'Beijing',
+    name: 'Financial Street (Jinrong Jie)',
+    description: 'Centro de control financiero de China',
+    coordinates: { lat: 39.9130, lng: 116.3564 },
+    banks: 185,
+    exchangeHouses: 28,
+    corporateOffices: 820,
+    tier: 1,
+    businessHours: 'L-V 09:00-17:00',
+    accessibility: 'Metro: Fuxingmen (Line 1, 2)',
+    majorInstitutions: ['PBOC', 'ICBC', 'BOC', 'CCB', 'ABC', 'CSRC']
+  },
+  {
+    country: 'CN',
+    city: 'Shanghai',
+    name: 'Lujiazui Financial District',
+    description: 'Centro financiero moderno de China',
+    coordinates: { lat: 31.2397, lng: 121.4994 },
+    banks: 220,
+    exchangeHouses: 42,
+    corporateOffices: 1200,
+    tier: 1,
+    businessHours: 'L-V 09:00-17:00',
+    accessibility: 'Metro: Lujiazui (Line 2)',
+    majorInstitutions: ['Shanghai Stock Exchange', 'Shanghai Tower', 'Oriental Pearl']
+  },
+  {
+    country: 'CN',
+    city: 'Shenzhen',
+    name: 'Futian CBD',
+    description: 'Centro tecnológico y financiero',
+    coordinates: { lat: 22.5431, lng: 114.0579 },
+    banks: 125,
+    exchangeHouses: 32,
+    corporateOffices: 680,
+    tier: 1,
+    businessHours: 'L-V 09:00-17:00',
+    accessibility: 'Metro: Chegongmiao, Futian (Line 1, 3, 4)',
+    majorInstitutions: ['Shenzhen Stock Exchange', 'Ping An', 'China Merchants Bank']
+  }
+]
+
+// ==========================================
+// 🇯🇵 JAPAN
+// ==========================================
+
+export const JAPAN_BANKS: Bank[] = [
+  {
+    id: 'mufg-jp',
+    name: 'Mitsubishi UFJ Financial Group (MUFG)',
+    tier: 'tier1',
+    country: 'JP',
+    type: 'internacional',
+    swift: 'BOTKJPJT',
+    website: 'https://www.mufg.jp',
+    phone: '+81 3-3240-1111',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 750,
+    locations: [
+      {
+        city: 'Tokyo',
+        district: 'Marunouchi',
+        address: '2-7-1 Marunouchi, Chiyoda-ku, Tokyo 100-8388',
+        coordinates: { lat: 35.6812, lng: 139.7671 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'private_banking'],
+        hours: 'L-V 09:00-15:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 300, international: 4000 }
+    },
+    hours: 'L-V 09:00-15:00'
+  },
+  {
+    id: 'smfg-jp',
+    name: 'Sumitomo Mitsui Financial Group (SMFG)',
+    tier: 'tier1',
+    country: 'JP',
+    type: 'internacional',
+    swift: 'SMBCJPJT',
+    website: 'https://www.smfg.co.jp',
+    phone: '+81 3-3282-8111',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 440,
+    locations: [
+      {
+        city: 'Tokyo',
+        district: 'Marunouchi',
+        address: '1-1-2 Yurakucho, Chiyoda-ku, Tokyo 100-0006',
+        coordinates: { lat: 35.6745, lng: 139.7638 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment'],
+        hours: 'L-V 09:00-15:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 300, international: 4000 }
+    },
+    hours: 'L-V 09:00-15:00'
+  },
+  {
+    id: 'mizuho-jp',
+    name: 'Mizuho Financial Group',
+    tier: 'tier1',
+    country: 'JP',
+    type: 'internacional',
+    swift: 'MHCBJPJT',
+    website: 'https://www.mizuho-fg.co.jp',
+    phone: '+81 3-5224-1111',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 470,
+    locations: [
+      {
+        city: 'Tokyo',
+        district: 'Marunouchi',
+        address: '1-5-5 Otemachi, Chiyoda-ku, Tokyo 100-8176',
+        coordinates: { lat: 35.6858, lng: 139.7645 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment'],
+        hours: 'L-V 09:00-15:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 300, international: 4000 }
+    },
+    hours: 'L-V 09:00-15:00'
+  },
+  {
+    id: 'nomura-jp',
+    name: 'Nomura Holdings',
+    tier: 'tier1',
+    country: 'JP',
+    type: 'internacional',
+    swift: 'NMRAJPJT',
+    website: 'https://www.nomura.com',
+    phone: '+81 3-5255-1000',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 156,
+    locations: [
+      {
+        city: 'Tokyo',
+        district: 'Nihonbashi',
+        address: '1-13-1 Nihonbashi, Chuo-ku, Tokyo 103-8645',
+        coordinates: { lat: 35.6836, lng: 139.7740 },
+        type: 'headquarters',
+        services: ['investment', 'private_banking', 'corporate'],
+        hours: 'L-V 09:00-15:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.3, max: 1.5 },
+      transferFee: { domestic: 500, international: 5000 }
+    },
+    hours: 'L-V 09:00-15:00'
+  }
+]
+
+export const JAPAN_EXCHANGE_HOUSES: ExchangeHouse[] = [
+  {
+    id: 'travelex-jp',
+    name: 'Travelex Japan',
+    country: 'JP',
+    established: 2002,
+    phone: '+81 3-5219-7788',
+    website: 'https://www.travelex.co.jp',
+    locations: [
+      {
+        city: 'Tokyo',
+        district: 'Narita Airport',
+        address: 'Narita International Airport Terminal 1',
+        coordinates: { lat: 35.7647, lng: 140.3863 },
+        type: 'branch',
+        services: ['cash_exchange', 'delivery'],
+        hours: 'L-D 06:00-23:00'
+      }
+    ],
+    currencies: ['JPY', 'USD', 'EUR', 'GBP', 'CNY', 'KRW', 'TWD', 'HKD'],
+    commission: { min: 1, max: 3 },
+    spread: { min: 2, max: 5 },
+    hours: 'Varía por ubicación',
+    rating: 4.2
+  },
+  {
+    id: 'jcb-exchange-jp',
+    name: 'JCB Foreign Exchange',
+    country: 'JP',
+    established: 1961,
+    phone: '+81 3-5778-8000',
+    website: 'https://www.global.jcb/en',
+    locations: [
+      {
+        city: 'Tokyo',
+        district: 'Minami-Aoyama',
+        address: '5-1-22 Minami-Aoyama, Minato-ku, Tokyo',
+        type: 'headquarters',
+        services: ['cash_exchange', 'wire_transfer'],
+        hours: 'L-V 09:00-17:00'
+      }
+    ],
+    currencies: ['JPY', 'USD', 'EUR', 'GBP', 'AUD', 'CAD', 'CHF'],
+    commission: { min: 1.5, max: 3.5 },
+    spread: { min: 2, max: 4 },
+    hours: 'L-V 09:00-17:00',
+    rating: 4.0
+  }
+]
+
+export const JAPAN_FINANCIAL_DISTRICTS: FinancialDistrict[] = [
+  {
+    country: 'JP',
+    city: 'Tokyo',
+    name: 'Marunouchi',
+    description: 'Corazón financiero de Japón',
+    coordinates: { lat: 35.6812, lng: 139.7671 },
+    banks: 128,
+    exchangeHouses: 35,
+    corporateOffices: 750,
+    tier: 1,
+    businessHours: 'L-V 09:00-15:00',
+    accessibility: 'Metro: Tokyo Station, Otemachi (Multiple Lines)',
+    majorInstitutions: ['Tokyo Stock Exchange', 'MUFG', 'Mizuho', 'SMBC', 'Bank of Japan']
+  },
+  {
+    country: 'JP',
+    city: 'Tokyo',
+    name: 'Nihonbashi',
+    description: 'Histórico distrito financiero',
+    coordinates: { lat: 35.6836, lng: 139.7740 },
+    banks: 85,
+    exchangeHouses: 22,
+    corporateOffices: 420,
+    tier: 1,
+    businessHours: 'L-V 09:00-15:00',
+    accessibility: 'Metro: Nihonbashi (Ginza, Tozai, Asakusa Lines)',
+    majorInstitutions: ['Nomura', 'Daiwa Securities', 'Bank of Japan (original location)']
+  }
+]
+
+// ==========================================
+// 🇮🇳 INDIA
+// ==========================================
+
+export const INDIA_BANKS: Bank[] = [
+  {
+    id: 'sbi-in',
+    name: 'State Bank of India (SBI)',
+    tier: 'tier2',
+    country: 'IN',
+    type: 'nacional',
+    swift: 'SBININBB',
+    website: 'https://www.sbi.co.in',
+    phone: '+91 22-2282-0427',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 22400,
+    locations: [
+      {
+        city: 'Mumbai',
+        district: 'Nariman Point',
+        address: 'State Bank Bhavan, Nariman Point, Mumbai 400021',
+        coordinates: { lat: 18.9250, lng: 72.8250 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'retail'],
+        hours: 'L-V 10:00-16:00, S 10:00-14:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 3 },
+      transferFee: { domestic: 100, international: 1000 }
+    },
+    hours: 'L-V 10:00-16:00, S 10:00-14:00'
+  },
+  {
+    id: 'hdfc-in',
+    name: 'HDFC Bank',
+    tier: 'tier2',
+    country: 'IN',
+    type: 'nacional',
+    swift: 'HDFCINBB',
+    website: 'https://www.hdfcbank.com',
+    phone: '+91 22-6652-6000',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 6378,
+    locations: [
+      {
+        city: 'Mumbai',
+        district: 'Bandra Kurla Complex',
+        address: 'HDFC Bank House, Senapati Bapat Marg, Mumbai 400070',
+        coordinates: { lat: 19.0607, lng: 72.8688 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'retail'],
+        hours: 'L-V 10:00-16:00, S 10:00-14:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 2.5 },
+      transferFee: { domestic: 100, international: 1000 }
+    },
+    hours: 'L-V 10:00-16:00, S 10:00-14:00'
+  },
+  {
+    id: 'icici-in',
+    name: 'ICICI Bank',
+    tier: 'tier2',
+    country: 'IN',
+    type: 'internacional',
+    swift: 'ICICINBB',
+    website: 'https://www.icicibank.com',
+    phone: '+91 22-2653-1414',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 5275,
+    locations: [
+      {
+        city: 'Mumbai',
+        district: 'Bandra Kurla Complex',
+        address: 'ICICI Bank Towers, Bandra Kurla Complex, Mumbai 400051',
+        coordinates: { lat: 19.0607, lng: 72.8719 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'retail'],
+        hours: 'L-V 10:00-16:00, S 10:00-14:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 2.5 },
+      transferFee: { domestic: 100, international: 1000 }
+    },
+    hours: 'L-V 10:00-16:00, S 10:00-14:00'
+  },
+  {
+    id: 'axis-in',
+    name: 'Axis Bank',
+    tier: 'tier3',
+    country: 'IN',
+    type: 'nacional',
+    swift: 'AXISINBB',
+    website: 'https://www.axisbank.com',
+    phone: '+91 22-2425-2525',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 4730,
+    locations: [
+      {
+        city: 'Mumbai',
+        district: 'Worli',
+        address: 'Axis House, Bombay Dyeing Mills Compound, Mumbai 400025',
+        coordinates: { lat: 19.0128, lng: 72.8193 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'retail'],
+        hours: 'L-V 10:00-16:00, S 10:00-14:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1.5, max: 3 },
+      transferFee: { domestic: 150, international: 1200 }
+    },
+    hours: 'L-V 10:00-16:00, S 10:00-14:00'
+  }
+]
+
+export const INDIA_EXCHANGE_HOUSES: ExchangeHouse[] = [
+  {
+    id: 'book-mychow-in',
+    name: 'BookMyChow Forex',
+    country: 'IN',
+    established: 2012,
+    phone: '+91 11-4242-6666',
+    website: 'https://www.bookmyforex.com',
+    locations: [
+      {
+        city: 'Delhi',
+        district: 'Connaught Place',
+        address: 'Connaught Place, New Delhi 110001',
+        coordinates: { lat: 28.6304, lng: 77.2177 },
+        type: 'branch',
+        services: ['cash_exchange', 'wire_transfer', 'delivery'],
+        hours: 'L-S 10:00-19:00'
+      }
+    ],
+    currencies: ['INR', 'USD', 'EUR', 'GBP', 'AED', 'SAR', 'SGD', 'AUD'],
+    commission: { min: 0.5, max: 2 },
+    spread: { min: 1, max: 3 },
+    hours: 'L-S 10:00-19:00',
+    rating: 4.6
+  }
+]
+
+export const INDIA_FINANCIAL_DISTRICTS: FinancialDistrict[] = [
+  {
+    country: 'IN',
+    city: 'Mumbai',
+    name: 'Bandra Kurla Complex (BKC)',
+    description: 'Moderno distrito financiero de India',
+    coordinates: { lat: 19.0607, lng: 72.8688 },
+    banks: 95,
+    exchangeHouses: 42,
+    corporateOffices: 620,
+    tier: 1,
+    businessHours: 'L-V 10:00-16:00, S 10:00-14:00',
+    accessibility: 'Metro: BKC (Line 1)',
+    majorInstitutions: ['RBI', 'BSE', 'NSE', 'HDFC', 'ICICI', 'SEBI']
+  },
+  {
+    country: 'IN',
+    city: 'Mumbai',
+    name: 'Nariman Point',
+    description: 'Histórico centro financiero',
+    coordinates: { lat: 18.9250, lng: 72.8250 },
+    banks: 68,
+    exchangeHouses: 28,
+    corporateOffices: 420,
+    tier: 1,
+    businessHours: 'L-V 10:00-16:00',
+    accessibility: 'Metro: Churchgate (Western Line)',
+    majorInstitutions: ['SBI', 'Air India', 'Tata Group']
+  }
+]
+
+// ==========================================
+// 🇸🇬 SINGAPORE
+// ==========================================
+
+export const SINGAPORE_BANKS: Bank[] = [
+  {
+    id: 'dbs-sg',
+    name: 'DBS Bank',
+    tier: 'tier1',
+    country: 'SG',
+    type: 'internacional',
+    swift: 'DBSSSGSG',
+    website: 'https://www.dbs.com.sg',
+    phone: '+65 6878-8888',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 280,
+    locations: [
+      {
+        city: 'Singapore',
+        district: 'Marina Bay',
+        address: '12 Marina Boulevard, DBS Asia Central, Singapore 018982',
+        coordinates: { lat: 1.2809, lng: 103.8541 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'private_banking'],
+        hours: 'L-V 09:30-16:30, S 09:30-13:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.3, max: 1.5 },
+      transferFee: { domestic: 10, international: 30 }
+    },
+    hours: 'L-V 09:30-16:30, S 09:30-13:00'
+  },
+  {
+    id: 'ocbc-sg',
+    name: 'OCBC Bank',
+    tier: 'tier1',
+    country: 'SG',
+    type: 'internacional',
+    swift: 'OCBCSGSG',
+    website: 'https://www.ocbc.com',
+    phone: '+65 6363-3333',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 465,
+    locations: [
+      {
+        city: 'Singapore',
+        district: 'Raffles Place',
+        address: '65 Chulia Street, OCBC Centre, Singapore 049513',
+        coordinates: { lat: 1.2841, lng: 103.8513 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'private_banking'],
+        hours: 'L-V 09:30-16:30'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.3, max: 1.5 },
+      transferFee: { domestic: 10, international: 30 }
+    },
+    hours: 'L-V 09:30-16:30, S 09:30-13:00'
+  },
+  {
+    id: 'uob-sg',
+    name: 'United Overseas Bank (UOB)',
+    tier: 'tier1',
+    country: 'SG',
+    type: 'internacional',
+    swift: 'UOVBSGSG',
+    website: 'https://www.uob.com.sg',
+    phone: '+65 6533-9898',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 500,
+    locations: [
+      {
+        city: 'Singapore',
+        district: 'Raffles Place',
+        address: '80 Raffles Place, UOB Plaza, Singapore 048624',
+        coordinates: { lat: 1.2845, lng: 103.8512 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'retail'],
+        hours: 'L-V 09:30-16:30'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 10, international: 30 }
+    },
+    hours: 'L-V 09:30-16:30, S 09:30-13:00'
+  }
+]
+
+export const SINGAPORE_EXCHANGE_HOUSES: ExchangeHouse[] = [
+  {
+    id: 'czarnikow-sg',
+    name: 'Czarnikow Singapore Money Changer',
+    country: 'SG',
+    established: 2005,
+    phone: '+65 6535-3355',
+    website: 'https://www.czarnikowmoneyexchange.com.sg',
+    locations: [
+      {
+        city: 'Singapore',
+        district: 'Raffles Place',
+        address: '78 Shenton Way, Singapore 079120',
+        coordinates: { lat: 1.2747, lng: 103.8470 },
+        type: 'branch',
+        services: ['cash_exchange', 'wire_transfer'],
+        hours: 'L-V 09:00-18:00, S 09:00-13:00'
+      }
+    ],
+    currencies: ['SGD', 'USD', 'EUR', 'GBP', 'JPY', 'AUD', 'CNY', 'HKD', 'MYR', 'THB'],
+    commission: { min: 0, max: 0 },
+    spread: { min: 0.5, max: 2 },
+    hours: 'L-V 09:00-18:00, S 09:00-13:00',
+    rating: 4.8
+  }
+]
+
+export const SINGAPORE_FINANCIAL_DISTRICTS: FinancialDistrict[] = [
+  {
+    country: 'SG',
+    city: 'Singapore',
+    name: 'Raffles Place & Marina Bay',
+    description: 'Centro financiero global de Asia',
+    coordinates: { lat: 1.2841, lng: 103.8513 },
+    banks: 145,
+    exchangeHouses: 58,
+    corporateOffices: 920,
+    tier: 1,
+    businessHours: 'L-V 09:30-16:30',
+    accessibility: 'MRT: Raffles Place (EW14, NS26), Downtown (DT17)',
+    majorInstitutions: ['MAS', 'SGX', 'DBS', 'OCBC', 'UOB', 'Temasek']
+  }
+]
+
+// ==========================================
+// 🇰🇷 SOUTH KOREA
+// ==========================================
+
+export const SOUTH_KOREA_BANKS: Bank[] = [
+  {
+    id: 'kb-kr',
+    name: 'KB Kookmin Bank',
+    tier: 'tier2',
+    country: 'KR',
+    type: 'nacional',
+    swift: 'CZNBKRSE',
+    website: 'https://www.kbstar.com',
+    phone: '+82 2-2073-0000',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 1090,
+    locations: [
+      {
+        city: 'Seoul',
+        district: 'Yeouido',
+        address: '84 Namdaemun-ro, Jung-gu, Seoul 04533',
+        coordinates: { lat: 37.5665, lng: 126.9780 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'retail'],
+        hours: 'L-V 09:00-16:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 3 },
+      transferFee: { domestic: 500, international: 15000 }
+    },
+    hours: 'L-V 09:00-16:00'
+  },
+  {
+    id: 'shinhan-kr',
+    name: 'Shinhan Bank',
+    tier: 'tier2',
+    country: 'KR',
+    type: 'internacional',
+    swift: 'SHBKKRSE',
+    website: 'https://www.shinhan.com',
+    phone: '+82 2-756-0505',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 980,
+    locations: [
+      {
+        city: 'Seoul',
+        district: 'Jung-gu',
+        address: '20 Sejong-daero 9-gil, Jung-gu, Seoul 04513',
+        coordinates: { lat: 37.5665, lng: 126.9916 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'retail'],
+        hours: 'L-V 09:00-16:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 2.5 },
+      transferFee: { domestic: 500, international: 15000 }
+    },
+    hours: 'L-V 09:00-16:00'
+  }
+]
+
+export const SOUTH_KOREA_EXCHANGE_HOUSES: ExchangeHouse[] = [
+  {
+    id: 'woori-exchange-kr',
+    name: 'Woori Bank Foreign Exchange',
+    country: 'KR',
+    established: 1999,
+    phone: '+82 2-2002-3000',
+    website: 'https://www.wooribank.com',
+    locations: [
+      {
+        city: 'Seoul',
+        district: 'Myeongdong',
+        address: 'Myeongdong Shopping District, Seoul',
+        coordinates: { lat: 37.5636, lng: 126.9840 },
+        type: 'branch',
+        services: ['cash_exchange', 'wire_transfer'],
+        hours: 'L-V 09:00-18:00'
+      }
+    ],
+    currencies: ['KRW', 'USD', 'EUR', 'JPY', 'CNY', 'GBP', 'AUD', 'CAD'],
+    commission: { min: 1, max: 3 },
+    spread: { min: 2, max: 4 },
+    hours: 'L-V 09:00-18:00',
+    rating: 4.3
+  }
+]
+
+export const SOUTH_KOREA_FINANCIAL_DISTRICTS: FinancialDistrict[] = [
+  {
+    country: 'KR',
+    city: 'Seoul',
+    name: 'Yeouido',
+    description: 'Distrito financiero de Corea del Sur',
+    coordinates: { lat: 37.5219, lng: 126.9245 },
+    banks: 72,
+    exchangeHouses: 28,
+    corporateOffices: 520,
+    tier: 1,
+    businessHours: 'L-V 09:00-16:00',
+    accessibility: 'Metro: Yeouido (Line 5, 9)',
+    majorInstitutions: ['KRX', 'KB Kookmin', 'Shinhan', 'Woori', 'KDB']
+  }
+]
+
+// ==========================================
+// EXPORTAR TODO ASIA
+// ==========================================
+
+export const ASIA_BANKS = [
+  ...CHINA_BANKS,
+  ...JAPAN_BANKS,
+  ...INDIA_BANKS,
+  ...SINGAPORE_BANKS,
+  ...SOUTH_KOREA_BANKS
+]
+
+export const ASIA_EXCHANGE_HOUSES = [
+  ...CHINA_EXCHANGE_HOUSES,
+  ...JAPAN_EXCHANGE_HOUSES,
+  ...INDIA_EXCHANGE_HOUSES,
+  ...SINGAPORE_EXCHANGE_HOUSES,
+  ...SOUTH_KOREA_EXCHANGE_HOUSES
+]
+
+export const ASIA_FINANCIAL_DISTRICTS = [
+  ...CHINA_FINANCIAL_DISTRICTS,
+  ...JAPAN_FINANCIAL_DISTRICTS,
+  ...INDIA_FINANCIAL_DISTRICTS,
+  ...SINGAPORE_FINANCIAL_DISTRICTS,
+  ...SOUTH_KOREA_FINANCIAL_DISTRICTS
+]

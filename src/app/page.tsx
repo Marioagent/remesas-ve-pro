@@ -32,26 +32,29 @@ export default function Home() {
       <nav className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-2">
-              <DollarSign className="w-8 h-8 text-blue-600" />
-              <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
-                RemesasVE Pro
+            <div className="flex items-center gap-3">
+              <img src="/logo-reme-lat-usa.svg" alt="REME LAT-USA" className="w-14 h-14 drop-shadow-lg" />
+              <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-clip-text text-transparent">
+                REME LAT-USA
               </span>
             </div>
             <div className="hidden md:flex gap-6">
-              <a href="#calculadora" className="text-gray-700 hover:text-blue-600 transition">
-                Calculadora
+              <a href="/financial" className="text-gray-700 hover:text-indigo-600 transition font-medium">
+                Sistema Financiero
               </a>
-              <a href="#comparador" className="text-gray-700 hover:text-blue-600 transition">
+              <a href="/comparador" className="text-gray-700 hover:text-indigo-600 transition">
                 Comparador
               </a>
-              <a href="#como-funciona" className="text-gray-700 hover:text-blue-600 transition">
-                Cómo Funciona
+              <a href="/dashboard" className="text-gray-700 hover:text-indigo-600 transition">
+                Dashboard
               </a>
             </div>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium transition">
-              Comenzar
-            </button>
+            <a
+              href="/financial"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-full font-medium transition"
+            >
+              Acceder
+            </a>
           </div>
         </div>
       </nav>
@@ -67,14 +70,17 @@ export default function Home() {
             <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
               Envía remesas a{' '}
               <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
-                Venezuela
+                Sudamérica
               </span>{' '}
               con la mejor tasa
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Compara en tiempo real las tasas de cambio de todos los servicios de remesas.
+              Compara en tiempo real las tasas de cambio de servicios de remesas en 13 países.
               Ahorra hasta 8% en cada envío. 100% seguro y transparente.
             </p>
+            <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
+              <span>🇦🇷 🇧🇴 🇧🇷 🇨🇱 🇨🇴 🇪🇨 🇬🇾 🇵🇦 🇵🇾 🇵🇪 🇸🇷 🇺🇾 🇻🇪 🇺🇸</span>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href="/calculadora"
@@ -175,7 +181,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              ¿Por qué RemesasVE Pro?
+              ¿Por qué Reme Global?
             </h2>
             <p className="text-xl text-gray-600">
               La forma más inteligente de enviar dinero a Venezuela
@@ -257,7 +263,7 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <DollarSign className="w-6 h-6" />
-                <span className="text-xl font-bold">RemesasVE Pro</span>
+                <span className="text-xl font-bold">Reme Global</span>
               </div>
               <p className="text-gray-400">
                 La mejor forma de enviar dinero a Venezuela
@@ -282,13 +288,13 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">Contacto</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>info@remesasve.pro</li>
-                <li>@RemesasVEPro</li>
+                <li>info@remeglobal.com</li>
+                <li>@RemeGlobal</li>
               </ul>
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 RemesasVE Pro. Todos los derechos reservados.</p>
+            <p>&copy; 2025 Reme Global. Todos los derechos reservados.</p>
             <p className="mt-2 text-sm">
               No procesamos transacciones. Comparamos y redirigimos a servicios legales.
             </p>

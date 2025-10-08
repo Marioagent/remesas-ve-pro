@@ -10,7 +10,9 @@ import {
   Clock,
   Zap,
   Award,
-  ExternalLink
+  ExternalLink,
+  Sparkles,
+  Brain
 } from 'lucide-react'
 import Link from 'next/link'
 import TasasAPI from '@/lib/api-clients/tasas-api'
@@ -36,6 +38,8 @@ export default function CalculadoraPage() {
   const [resultados, setResultados] = useState<ResultadoComparacion[]>([])
   const [loading, setLoading] = useState(false)
   const [calculado, setCalculado] = useState(false)
+  const [ragmac1Recommendation, setRagmac1Recommendation] = useState<string>('')
+  const [ragmac1Loading, setRagmac1Loading] = useState(false)
 
   useEffect(() => {
     cargarTasas()
@@ -116,6 +120,49 @@ export default function CalculadoraPage() {
     }
   }
 
+  const obtenerAnalisisRAGMac1 = async () => {
+    setRagmac1Loading(true)
+    setRagmac1Recommendation('')
+
+    try {
+      const monto = parseFloat(montoUSD)
+      if (isNaN(monto) || monto <= 0) {
+        setRagmac1Loading(false)
+        return
+      }
+
+      // Construir requirements basado en los resultados actuales
+      let requirements = ''
+      if (calculado && resultados.length > 0) {
+        requirements = `Ya comparé los servicios y el mejor es ${resultados[0].servicio.nombre} con ${formatNumber(resultados[0].montoRecibir, 2)} Bs. Dame más detalles y recomendaciones adicionales.`
+      }
+
+      const response = await fetch('/api/ragmac1', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'analyze_services',
+          amount: monto,
+          requirements: requirements || 'Necesito una recomendación completa considerando velocidad, costo y confiabilidad'
+        })
+      })
+
+      const data = await response.json()
+
+      if (data.success && data.answer) {
+        setRagmac1Recommendation(data.answer)
+        analytics.trackRAGMac1Usage('analyze_services', monto)
+      } else {
+        setRagmac1Recommendation('No se pudo obtener recomendación de RAGMac1. Verifica que ANTHROPIC_API_KEY esté configurada.')
+      }
+    } catch (error) {
+      console.error('Error obteniendo análisis RAGMac1:', error)
+      setRagmac1Recommendation('Error al obtener recomendación. Por favor intenta nuevamente.')
+    } finally {
+      setRagmac1Loading(false)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
       {/* Header */}
@@ -125,7 +172,7 @@ export default function CalculadoraPage() {
             <Link href="/" className="flex items-center gap-2">
               <DollarSign className="w-8 h-8 text-blue-600" />
               <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
-                RemesasVE Pro
+                Reme Global
               </span>
             </Link>
             <div className="flex gap-4">
@@ -240,7 +287,65 @@ export default function CalculadoraPage() {
               </>
             )}
           </button>
+
+          {/* RAGMac1 Intelligent Analysis Button */}
+          <button
+            onClick={obtenerAnalisisRAGMac1}
+            disabled={ragmac1Loading || !montoUSD || parseFloat(montoUSD) <= 0}
+            className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white py-4 rounded-xl font-bold text-lg transition shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-3"
+          >
+            {ragmac1Loading ? (
+              <>
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
+                Analizando con IA...
+              </>
+            ) : (
+              <>
+                <Sparkles className="w-5 h-5" />
+                Análisis Inteligente con RAGMac1
+              </>
+            )}
+          </button>
+
+          {/* RAGMac1 Badge */}
+          <div className="flex items-center justify-center gap-2 text-xs text-gray-500 mt-2">
+            <span>Powered by</span>
+            <span className="font-bold text-purple-600">RAGMac1</span>
+            <Brain className="w-3 h-3 text-purple-600" />
+          </div>
         </motion.div>
+
+        {/* RAGMac1 Recommendation Panel */}
+        {ragmac1Recommendation && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-gradient-to-r from-purple-50 to-blue-50 border-2 border-purple-200 rounded-3xl p-8 mb-8 shadow-xl"
+          >
+            <div className="flex items-start gap-4">
+              <Brain className="w-8 h-8 text-purple-600 flex-shrink-0 mt-1" />
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  Recomendación Inteligente RAGMac1
+                  <Sparkles className="w-6 h-6 text-purple-600" />
+                </h3>
+                <div className="prose prose-lg max-w-none">
+                  <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">
+                    {ragmac1Recommendation}
+                  </p>
+                </div>
+                <div className="mt-4 pt-4 border-t border-purple-200">
+                  <div className="flex items-center gap-2 text-sm text-purple-600">
+                    <Zap className="w-4 h-4" />
+                    <span className="font-semibold">
+                      Análisis generado por RAGMac1 - Sistema de IA especializado en remesas a Venezuela
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
 
         {/* Results */}
         {calculado && resultados.length > 0 && (

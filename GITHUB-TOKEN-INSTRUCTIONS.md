@@ -10,7 +10,7 @@ https://github.com/settings/tokens/new
 
 ### Paso 2: Configurar el Token
 
-**Note (Nombre):** `RemesasVE Pro Deployment`
+**Note (Nombre):** `Reme Global Deployment`
 
 **Expiration:** Selecciona `90 days` (o el que prefieres)
 

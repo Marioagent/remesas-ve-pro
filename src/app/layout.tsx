@@ -14,20 +14,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RemesasVE Pro - Comparador de Remesas a Venezuela",
+  title: "Reme Global - Remesas Internacionales",
   description: "Compara en tiempo real las tasas de cambio de todos los servicios de remesas a Venezuela. Ahorra hasta 8% en cada envío. 100% seguro y transparente.",
-  keywords: "remesas venezuela, enviar dinero venezuela, tasa cambio venezuela, dolares venezuela, zoom, reserve, airtm, binance p2p",
-  authors: [{ name: "RemesasVE Pro" }],
+  keywords: "remesas venezuela, enviar dinero venezuela, tasa cambio venezuela, dolares venezuela, zoom, reserve, airtm, binance p2p, reme global",
+  authors: [{ name: "Reme Global" }],
+  manifest: "/manifest.json",
+  themeColor: "#6366f1",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    viewportFit: "cover",
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Reme Global",
+  },
   openGraph: {
-    title: "RemesasVE Pro - Comparador de Remesas a Venezuela",
+    title: "Reme Global - Remesas Internacionales",
     description: "Compara tasas de cambio y ahorra hasta 8% en cada envío a Venezuela",
     type: "website",
     locale: "es_VE",
-    siteName: "RemesasVE Pro",
+    siteName: "Reme Global",
   },
   twitter: {
     card: "summary_large_image",
-    title: "RemesasVE Pro - Comparador de Remesas",
+    title: "Reme Global - Remesas Internacionales",
     description: "Compara tasas y ahorra en tus envíos a Venezuela",
   },
   robots: {
@@ -36,6 +50,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/favicon.ico",
+    apple: [
+      { url: "/icons/icon-192x192.png", sizes: "192x192", type: "image/png" },
+    ],
   },
 };
 

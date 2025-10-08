@@ -1,4 +1,4 @@
-# 📱 Contenido Listo para Redes Sociales - RemesasVE Pro
+# 📱 Contenido Listo para Redes Sociales - Reme Global
 
 **Tu URL:** https://remesas-ve-pro.vercel.app
 
@@ -17,7 +17,7 @@
 ```
 Hola compatriotas 🇻🇪
 
-Acabo de lanzar RemesasVE Pro, una herramienta gratuita para comparar las tasas de TODOS los servicios de remesas a Venezuela en tiempo real.
+Acabo de lanzar Reme Global, una herramienta gratuita para comparar las tasas de TODOS los servicios de remesas a Venezuela en tiempo real.
 
 🎯 ¿Qué hace?
 • Compara 8 servicios: Zoom, Reserve, AirTM, Binance P2P, Western Union, MoneyGram, Remesa Feliz y Valiu
@@ -225,7 +225,7 @@ ESCENA 2:
 
 ### Tweet 1: Lanzamiento
 ```
-🚀 Lancé RemesasVE Pro
+🚀 Lancé Reme Global
 
 Comparador de remesas a Venezuela en tiempo real
 
@@ -247,7 +247,7 @@ RT si envías dinero a Venezuela 🇻🇪
 ```
 ❌ Problema: No sabes cuál servicio de remesas te da mejor tasa
 
-✅ Solución: RemesasVE Pro te compara los 8 principales en segundos
+✅ Solución: Reme Global te compara los 8 principales en segundos
 
 La diferencia puede ser $8 en un envío de $100
 
@@ -260,7 +260,7 @@ Pruébalo: https://remesas-ve-pro.vercel.app
 
 ### Tweet 3: Social Proof
 ```
-Acabo de usar RemesasVE Pro para comparar servicios de remesas
+Acabo de usar Reme Global para comparar servicios de remesas
 
 Resultado: 240 Bs más usando Reserve en vez de mi servicio habitual
 
@@ -347,7 +347,7 @@ Vi que tu audiencia incluye muchos venezolanos que envían dinero a Venezuela.
 
 Creé una herramienta que creo podría serles útil:
 
-🔗 RemesasVE Pro - https://remesas-ve-pro.vercel.app
+🔗 Reme Global - https://remesas-ve-pro.vercel.app
 
 ¿Qué hace?
 • Compara 8 servicios de remesas en tiempo real
@@ -398,7 +398,7 @@ PD: La herramienta es open source y sin fines de lucro (por ahora). Solo quiero 
 ```
 Diseño: 2 columnas
 Izquierda (❌): "Sin comparar: 8,200 Bs"
-Derecha (✅): "Con RemesasVE Pro: 8,560 Bs"
+Derecha (✅): "Con Reme Global: 8,560 Bs"
 Abajo: "Diferencia: 360 Bs ($8)"
 CTA: "Compara gratis en remesas-ve-pro.vercel.app"
 ```
@@ -406,7 +406,7 @@ CTA: "Compara gratis en remesas-ve-pro.vercel.app"
 **Post 2: Testimonial Style**
 ```
 "Ahorro $6 por remesa solo comparando"
-- Usuario de RemesasVE Pro
+- Usuario de Reme Global
 CTA: Pruébalo gratis → [URL]
 ```
 

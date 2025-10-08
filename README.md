@@ -1,8 +1,12 @@
-# 🇻🇪 RemesasVE Pro
+# 💧 REME LAT-USA
 
-**La mejor forma de enviar remesas a Venezuela**
+**Tu solución de remesas entre Latinoamérica y Estados Unidos**
 
-Plataforma web/PWA que compara en tiempo real las tasas de cambio de todos los servicios de remesas a Venezuela. Ayuda a los usuarios a ahorrar hasta 8% en cada envío.
+Plataforma web/PWA full-stack que compara en tiempo real las tasas de cambio de servicios de remesas en **13 países** (Sudamérica + USA). Sistema 100% operativo con alertas en tiempo real, autenticación, dashboard de usuario y sistema de pagos.
+
+**Países soportados:** 🇦🇷 🇧🇴 🇧🇷 🇨🇱 🇨🇴 🇪🇨 🇬🇾 🇵🇦 🇵🇾 🇵🇪 🇸🇷 🇺🇾 🇻🇪 🇺🇸
+
+![Reme Global Logo](public/logo-reme-global.svg)
 
 ## 🎯 Características
 
@@ -134,7 +138,7 @@ remesas-ve-pro/
 
 ## ⚖️ Legal
 
-**Importante:** RemesasVE Pro NO procesa transacciones financieras. Somos un comparador de información que redirige a servicios legales establecidos. Similar a:
+**Importante:** Reme Global NO procesa transacciones financieras. Somos un comparador de información que redirige a servicios legales establecidos. Similar a:
 - TripAdvisor (compara hoteles)
 - Google Flights (compara vuelos)
 - MercadoLibre (compara productos)

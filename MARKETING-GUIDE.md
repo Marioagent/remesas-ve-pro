@@ -1,4 +1,4 @@
-# 📢 Guía de Marketing - RemesasVE Pro
+# 📢 Guía de Marketing - Reme Global
 
 ## 🎯 Tu Sitio Web LIVE:
 ```
@@ -15,8 +15,8 @@ https://remesas-ve-jyj1v16vn-macglobalapps-gmailcoms-projects.vercel.app
 
 **Pasos:**
 1. Click "Start measuring"
-2. Account name: `RemesasVE Pro`
-3. Property name: `RemesasVE Pro`
+2. Account name: `Reme Global`
+3. Property name: `Reme Global`
 4. Time zone: `Venezuela`
 5. Currency: `US Dollar (USD)`
 6. Industry: `Finance`
@@ -144,7 +144,7 @@ Deja de perder $ en comisiones innecesarias
 
 ### **LinkedIn:**
 ```
-Proyecto: RemesasVE Pro 🇻🇪
+Proyecto: Reme Global 🇻🇪
 
 Plataforma que compara tasas de remesas a Venezuela en tiempo real.
 
@@ -191,7 +191,7 @@ Asunto: Herramienta para tu audiencia 🇻🇪
 
 Hola [Nombre],
 
-Soy desarrollador y creé RemesasVE Pro, un comparador de tasas de remesas a Venezuela en tiempo real.
+Soy desarrollador y creé Reme Global, un comparador de tasas de remesas a Venezuela en tiempo real.
 
 Creo que podría ser útil para tu audiencia porque:
 - Compara 8 servicios automáticamente

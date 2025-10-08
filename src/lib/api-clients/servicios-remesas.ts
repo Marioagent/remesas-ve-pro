@@ -1,4 +1,4 @@
-import { ServicioRemesa } from '@/types'
+import { ServicioRemesa, CalculoRemesa } from '@/types'
 
 // Base de datos de servicios de remesas disponibles en Venezuela
 export const SERVICIOS_REMESAS: ServicioRemesa[] = [
@@ -140,101 +140,45 @@ export const SERVICIOS_REMESAS: ServicioRemesa[] = [
   }
 ]
 
-// Clase para gestionar servicios de remesas
-export class ServiciosRemesasAPI {
+// Obtener todos los servicios disponibles
+export async function obtenerServiciosRemesas(): Promise<ServicioRemesa[]> {
+  // En el futuro, esto podría obtener datos de una API real
+  return SERVICIOS_REMESAS.filter(s => s.disponibilidad)
+}
 
-  // Obtener todos los servicios
-  static obtenerTodos(): ServicioRemesa[] {
-    return SERVICIOS_REMESAS.filter(s => s.disponibilidad)
-  }
+// Calcular remesa para un servicio específico
+export function calcularRemesa(
+  montoUSD: number,
+  servicio: ServicioRemesa,
+  tasaCambio?: number
+): CalculoRemesa {
+  // Usar tasa del servicio o tasa proporcionada
+  const tasa = tasaCambio || servicio.tasaCambio || 45
 
-  // Obtener servicio por ID
-  static obtenerPorId(id: string): ServicioRemesa | undefined {
-    return SERVICIOS_REMESAS.find(s => s.id === id)
-  }
+  // Calcular comisión
+  const comisionFija = servicio.comision || 0
+  const comisionPorcentaje = servicio.comisionPorcentaje || 0
+  const comisionCalculada = montoUSD * (comisionPorcentaje / 100)
+  const comisionTotal = comisionFija + comisionCalculada
 
-  // Calcular costo total de envío
-  static calcularCostoTotal(servicio: ServicioRemesa, montoUSD: number): number {
-    const comisionFija = servicio.comision || 0
-    const comisionPorcentaje = servicio.comisionPorcentaje || 0
-    const comisionCalculada = montoUSD * (comisionPorcentaje / 100)
+  // Calcular monto neto
+  const montoNeto = montoUSD - comisionTotal
+  const montoRecibir = montoNeto * tasa
+  const montoTotal = montoUSD + comisionTotal
 
-    return comisionFija + comisionCalculada
-  }
-
-  // Calcular monto a recibir en BS
-  static calcularMontoRecibir(
-    servicio: ServicioRemesa,
-    montoUSD: number,
-    tasaCambio: number
-  ): number {
-    const costoTotal = this.calcularCostoTotal(servicio, montoUSD)
-    const montoNeto = montoUSD - costoTotal
-    return montoNeto * tasaCambio
-  }
-
-  // Comparar todos los servicios para un monto
-  static compararServicios(montoUSD: number, tasaCambio: number) {
-    return this.obtenerTodos()
-      .filter(s => montoUSD >= s.montoMinimo && montoUSD <= s.montoMaximo)
-      .map(servicio => {
-        const costoEnvio = this.calcularCostoTotal(servicio, montoUSD)
-        const montoRecibir = this.calcularMontoRecibir(servicio, montoUSD, tasaCambio)
-        const montoTotal = montoUSD + costoEnvio
-
-        return {
-          servicio,
-          costoEnvio,
-          montoRecibir,
-          montoTotal,
-          tasaEfectiva: montoRecibir / montoUSD
-        }
-      })
-      .sort((a, b) => b.montoRecibir - a.montoRecibir) // Ordenar por mejor tasa
-  }
-
-  // Obtener mejor servicio
-  static obtenerMejorServicio(montoUSD: number, tasaCambio: number): ServicioRemesa | null {
-    const comparacion = this.compararServicios(montoUSD, tasaCambio)
-    return comparacion.length > 0 ? comparacion[0].servicio : null
-  }
-
-  // Filtrar por características
-  static filtrarServicios(filtros: {
-    montoMinimo?: number
-    montoMaximo?: number
-    tiempoMaximo?: string
-    metodoEnvio?: string
-    metodoRecepcion?: string
-  }): ServicioRemesa[] {
-    let servicios = this.obtenerTodos()
-
-    if (filtros.montoMinimo) {
-      servicios = servicios.filter(s => s.montoMaximo >= filtros.montoMinimo!)
-    }
-
-    if (filtros.montoMaximo) {
-      servicios = servicios.filter(s => s.montoMinimo <= filtros.montoMaximo!)
-    }
-
-    if (filtros.metodoEnvio) {
-      servicios = servicios.filter(s =>
-        s.metodosEnvio.some(m =>
-          m.toLowerCase().includes(filtros.metodoEnvio!.toLowerCase())
-        )
-      )
-    }
-
-    if (filtros.metodoRecepcion) {
-      servicios = servicios.filter(s =>
-        s.metodosRecepcion.some(m =>
-          m.toLowerCase().includes(filtros.metodoRecepcion!.toLowerCase())
-        )
-      )
-    }
-
-    return servicios
+  return {
+    montoEnvio: montoUSD,
+    moneda: 'USD',
+    servicio,
+    tasaCambio: tasa,
+    comision: comisionTotal,
+    montoRecibir,
+    montoTotal
   }
 }
 
-export default ServiciosRemesasAPI
+export default {
+  obtenerServiciosRemesas,
+  calcularRemesa,
+  SERVICIOS_REMESAS
+}

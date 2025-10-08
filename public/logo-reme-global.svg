@@ -1,0 +1,65 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="200" cy="200" r="190" fill="url(#gradient1)"/>
+
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Globe Icon - Minimalista -->
+  <g transform="translate(200, 180)">
+    <!-- Globe Circle -->
+    <circle cx="0" cy="0" r="80" fill="white" opacity="0.2"/>
+    <circle cx="0" cy="0" r="75" fill="none" stroke="white" stroke-width="3"/>
+
+    <!-- Meridians -->
+    <ellipse cx="0" cy="0" rx="25" ry="75" fill="none" stroke="white" stroke-width="2.5" opacity="0.8"/>
+    <ellipse cx="0" cy="0" rx="50" ry="75" fill="none" stroke="white" stroke-width="2" opacity="0.6"/>
+
+    <!-- Equator -->
+    <line x1="-75" y1="0" x2="75" y2="0" stroke="white" stroke-width="2.5" opacity="0.8"/>
+
+    <!-- Parallels -->
+    <ellipse cx="0" cy="-40" rx="65" ry="15" fill="none" stroke="white" stroke-width="2" opacity="0.5"/>
+    <ellipse cx="0" cy="40" rx="65" ry="15" fill="none" stroke="white" stroke-width="2" opacity="0.5"/>
+
+    <!-- Money Transfer Arrows -->
+    <!-- Arrow 1 (izquierda a derecha) -->
+    <g opacity="0.9">
+      <path d="M -60,-30 Q 0,-50 60,-30" fill="none" stroke="url(#gradient2)" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="60" cy="-30" r="5" fill="url(#gradient2)"/>
+      <polygon points="65,-30 55,-35 55,-25" fill="url(#gradient2)"/>
+    </g>
+
+    <!-- Arrow 2 (derecha a izquierda) -->
+    <g opacity="0.9">
+      <path d="M 60,30 Q 0,50 -60,30" fill="none" stroke="url(#gradient3)" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="-60" cy="30" r="5" fill="url(#gradient3)"/>
+      <polygon points="-65,30 -55,25 -55,35" fill="url(#gradient3)"/>
+    </g>
+
+    <!-- Dollar Signs -->
+    <text x="-70" y="-25" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="url(#gradient2)">$</text>
+    <text x="60" y="38" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="url(#gradient3)">$</text>
+  </g>
+
+  <!-- Text: REME -->
+  <text x="200" y="310" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="2">REME</text>
+
+  <!-- Text: GLOBAL -->
+  <text x="200" y="345" font-family="Arial, sans-serif" font-size="32" font-weight="300" fill="white" text-anchor="middle" letter-spacing="4">GLOBAL</text>
+</svg>

@@ -1,0 +1,934 @@
+/**
+ * EUROPE FINANCIAL INSTITUTIONS DATABASE
+ * Unión Europea (27) + Reino Unido + Suiza + Noruega
+ * Sistema Financiero Completo Europeo
+ */
+
+import { Bank, ExchangeHouse, FinancialDistrict } from '@/types/financial-system'
+
+// ==========================================
+// 🇬🇧 UNITED KINGDOM
+// ==========================================
+
+export const UK_BANKS: Bank[] = [
+  {
+    id: 'hsbc-gb',
+    name: 'HSBC Holdings',
+    tier: 'tier1',
+    country: 'GB',
+    type: 'internacional',
+    swift: 'HSBCGB2L',
+    website: 'https://www.hsbc.co.uk',
+    phone: '+44 20-7991-8888',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 625,
+    locations: [
+      {
+        city: 'London',
+        district: 'Canary Wharf',
+        address: '8 Canada Square, London E14 5HQ',
+        coordinates: { lat: 51.5045, lng: -0.0197 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'private_banking'],
+        hours: 'L-V 09:00-17:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 10, international: 25 }
+    },
+    hours: 'L-V 09:00-17:00, S 09:00-13:00'
+  },
+  {
+    id: 'barclays-gb',
+    name: 'Barclays Bank',
+    tier: 'tier1',
+    country: 'GB',
+    type: 'internacional',
+    swift: 'BARCGB22',
+    website: 'https://www.barclays.co.uk',
+    phone: '+44 20-7116-1000',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 950,
+    locations: [
+      {
+        city: 'London',
+        district: 'Canary Wharf',
+        address: '1 Churchill Place, London E14 5HP',
+        coordinates: { lat: 51.5048, lng: -0.0195 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'retail'],
+        hours: 'L-V 09:00-17:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.75, max: 2.5 },
+      transferFee: { domestic: 12, international: 28 }
+    },
+    hours: 'L-V 09:00-17:00'
+  },
+  {
+    id: 'lloyds-gb',
+    name: 'Lloyds Banking Group',
+    tier: 'tier2',
+    country: 'GB',
+    type: 'nacional',
+    swift: 'LOYDGB2L',
+    website: 'https://www.lloydsbank.com',
+    phone: '+44 20-7626-1500',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 1550,
+    locations: [
+      {
+        city: 'London',
+        district: 'City of London',
+        address: '25 Gresham Street, London EC2V 7HN',
+        coordinates: { lat: 51.5155, lng: -0.0922 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'retail'],
+        hours: 'L-V 09:00-17:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 3 },
+      transferFee: { domestic: 15, international: 30 }
+    },
+    hours: 'L-V 09:00-17:00'
+  },
+  {
+    id: 'natwest-gb',
+    name: 'NatWest Group',
+    tier: 'tier2',
+    country: 'GB',
+    type: 'nacional',
+    swift: 'NWBKGB2L',
+    website: 'https://www.natwest.com',
+    phone: '+44 20-7672-5000',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 960,
+    locations: [
+      {
+        city: 'Edinburgh',
+        district: 'New Town',
+        address: '36 St Andrew Square, Edinburgh EH2 2YB',
+        coordinates: { lat: 55.9549, lng: -3.1930 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'retail'],
+        hours: 'L-V 09:00-17:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 2.5 },
+      transferFee: { domestic: 15, international: 25 }
+    },
+    hours: 'L-V 09:00-17:00'
+  }
+]
+
+export const UK_EXCHANGE_HOUSES: ExchangeHouse[] = [
+  {
+    id: 'wise-gb',
+    name: 'Wise (formerly TransferWise)',
+    country: 'GB',
+    established: 2011,
+    phone: '+44 20-3936-2505',
+    website: 'https://wise.com',
+    locations: [
+      {
+        city: 'London',
+        district: 'Online',
+        address: 'Online Platform',
+        type: 'headquarters',
+        services: ['wire_transfer', 'online_exchange', 'debit_card'],
+        hours: '24/7 Online'
+      }
+    ],
+    currencies: ['EUR', 'USD', 'GBP', 'CAD', 'AUD', 'CHF', 'JPY', 'SGD', 'HKD', 'NZD'],
+    commission: { min: 0, max: 0 },
+    spread: { min: 0.3, max: 1 },
+    hours: '24/7 Online',
+    rating: 4.9
+  },
+  {
+    id: 'revolut-gb',
+    name: 'Revolut',
+    country: 'GB',
+    established: 2015,
+    phone: '+44 20-3322-8352',
+    website: 'https://www.revolut.com',
+    locations: [
+      {
+        city: 'London',
+        district: 'Online',
+        address: 'Online Platform',
+        type: 'headquarters',
+        services: ['wire_transfer', 'online_exchange', 'crypto', 'debit_card'],
+        hours: '24/7 Online'
+      }
+    ],
+    currencies: ['EUR', 'USD', 'GBP', 'CHF', 'PLN', 'RON', 'HUF', 'CZK', 'SEK', 'NOK'],
+    commission: { min: 0, max: 0 },
+    spread: { min: 0, max: 0.5 },
+    hours: '24/7 Online',
+    rating: 4.7
+  }
+]
+
+export const UK_FINANCIAL_DISTRICTS: FinancialDistrict[] = [
+  {
+    country: 'GB',
+    city: 'London',
+    name: 'City of London',
+    description: 'Centro financiero histórico mundial',
+    coordinates: { lat: 51.5155, lng: -0.0922 },
+    banks: 145,
+    exchangeHouses: 42,
+    corporateOffices: 620,
+    tier: 1,
+    businessHours: 'L-V 09:00-17:00',
+    accessibility: 'Underground: Bank, Moorgate, Liverpool St, Monument',
+    majorInstitutions: ['Bank of England', 'LSE', 'Lloyds', 'Standard Chartered']
+  },
+  {
+    country: 'GB',
+    city: 'London',
+    name: 'Canary Wharf',
+    description: 'Moderno distrito financiero',
+    coordinates: { lat: 51.5045, lng: -0.0197 },
+    banks: 88,
+    exchangeHouses: 18,
+    corporateOffices: 480,
+    tier: 1,
+    businessHours: 'L-V 08:00-18:00',
+    accessibility: 'DLR: Canary Wharf, Jubilee Line',
+    majorInstitutions: ['HSBC', 'Barclays', 'Citi', 'J.P. Morgan']
+  }
+]
+
+// ==========================================
+// 🇩🇪 GERMANY
+// ==========================================
+
+export const GERMANY_BANKS: Bank[] = [
+  {
+    id: 'deutsche-de',
+    name: 'Deutsche Bank',
+    tier: 'tier1',
+    country: 'DE',
+    type: 'internacional',
+    swift: 'DEUTDEFF',
+    website: 'https://www.deutsche-bank.de',
+    phone: '+49 69-910-00',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 471,
+    locations: [
+      {
+        city: 'Frankfurt',
+        district: 'Bankenviertel',
+        address: 'Taunusanlage 12, 60325 Frankfurt',
+        coordinates: { lat: 50.1109, lng: 8.6821 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'private_banking'],
+        hours: 'L-V 09:00-16:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 8, international: 25 }
+    },
+    hours: 'L-V 09:00-16:00'
+  },
+  {
+    id: 'commerzbank-de',
+    name: 'Commerzbank',
+    tier: 'tier2',
+    country: 'DE',
+    type: 'nacional',
+    swift: 'COBADEFF',
+    website: 'https://www.commerzbank.de',
+    phone: '+49 69-136-20',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 790,
+    locations: [
+      {
+        city: 'Frankfurt',
+        district: 'Bankenviertel',
+        address: 'Kaiserplatz, 60311 Frankfurt',
+        coordinates: { lat: 50.1109, lng: 8.6837 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'retail'],
+        hours: 'L-V 09:00-16:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 2.5 },
+      transferFee: { domestic: 10, international: 28 }
+    },
+    hours: 'L-V 09:00-16:00'
+  },
+  {
+    id: 'dz-de',
+    name: 'DZ Bank',
+    tier: 'tier2',
+    country: 'DE',
+    type: 'nacional',
+    swift: 'GENODEFF',
+    website: 'https://www.dzbank.de',
+    phone: '+49 69-7447-01',
+    foreignExchange: true,
+    privateBanking: false,
+    corporateBanking: true,
+    branches: 850,
+    locations: [
+      {
+        city: 'Frankfurt',
+        district: 'Bankenviertel',
+        address: 'Platz der Republik, 60265 Frankfurt',
+        coordinates: { lat: 50.1109, lng: 8.6756 },
+        type: 'headquarters',
+        services: ['forex', 'corporate'],
+        hours: 'L-V 09:00-16:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.8, max: 2 },
+      transferFee: { domestic: 5, international: 20 }
+    },
+    hours: 'L-V 09:00-16:00'
+  }
+]
+
+export const GERMANY_EXCHANGE_HOUSES: ExchangeHouse[] = [
+  {
+    id: 'reisebank-de',
+    name: 'ReiseBank',
+    country: 'DE',
+    established: 1923,
+    phone: '+49 69-2693-0',
+    website: 'https://www.reisebank.de',
+    locations: [
+      {
+        city: 'Frankfurt',
+        district: 'Hauptbahnhof',
+        address: 'Frankfurt Hauptbahnhof, 60329 Frankfurt',
+        coordinates: { lat: 50.1070, lng: 8.6634 },
+        type: 'branch',
+        services: ['cash_exchange', 'wire_transfer'],
+        hours: 'L-D 07:00-22:00'
+      }
+    ],
+    currencies: ['EUR', 'USD', 'GBP', 'CHF', 'JPY', 'CAD', 'AUD', 'DKK', 'SEK', 'NOK'],
+    commission: { min: 1, max: 3 },
+    spread: { min: 2, max: 4 },
+    hours: 'Varía por ubicación',
+    rating: 4.3
+  }
+]
+
+export const GERMANY_FINANCIAL_DISTRICTS: FinancialDistrict[] = [
+  {
+    country: 'DE',
+    city: 'Frankfurt',
+    name: 'Bankenviertel (Financial District)',
+    description: 'Centro financiero de Europa Continental',
+    coordinates: { lat: 50.1109, lng: 8.6821 },
+    banks: 95,
+    exchangeHouses: 28,
+    corporateOffices: 520,
+    tier: 1,
+    businessHours: 'L-V 09:00-16:00',
+    accessibility: 'U-Bahn: Willy-Brandt-Platz, Hauptwache, S-Bahn: Taunusanlage',
+    majorInstitutions: ['ECB', 'Deutsche Bank', 'Commerzbank', 'DZ Bank', 'Deutsche Börse']
+  }
+]
+
+// ==========================================
+// 🇫🇷 FRANCE
+// ==========================================
+
+export const FRANCE_BANKS: Bank[] = [
+  {
+    id: 'bnp-fr',
+    name: 'BNP Paribas',
+    tier: 'tier1',
+    country: 'FR',
+    type: 'internacional',
+    swift: 'BNPAFRPP',
+    website: 'https://www.bnpparibas.fr',
+    phone: '+33 1-40-14-45-46',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 1870,
+    locations: [
+      {
+        city: 'Paris',
+        district: 'La Défense',
+        address: '16 Boulevard des Italiens, 75009 Paris',
+        coordinates: { lat: 48.8738, lng: 2.3377 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'private_banking'],
+        hours: 'L-V 09:00-17:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 8, international: 25 }
+    },
+    hours: 'L-V 09:00-17:00'
+  },
+  {
+    id: 'ca-fr',
+    name: 'Crédit Agricole',
+    tier: 'tier2',
+    country: 'FR',
+    type: 'nacional',
+    swift: 'AGRIFRPP',
+    website: 'https://www.credit-agricole.fr',
+    phone: '+33 1-43-23-52-02',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 6700,
+    locations: [
+      {
+        city: 'Paris',
+        district: 'Montrouge',
+        address: '12 Place des États-Unis, 92120 Montrouge',
+        coordinates: { lat: 48.8191, lng: 2.3198 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'retail'],
+        hours: 'L-V 09:00-17:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 2.5 },
+      transferFee: { domestic: 10, international: 28 }
+    },
+    hours: 'L-V 09:00-17:00, S 09:00-13:00'
+  },
+  {
+    id: 'sg-fr',
+    name: 'Société Générale',
+    tier: 'tier1',
+    country: 'FR',
+    type: 'internacional',
+    swift: 'SOGEFRPP',
+    website: 'https://www.societegenerale.fr',
+    phone: '+33 1-42-14-20-00',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 1520,
+    locations: [
+      {
+        city: 'Paris',
+        district: 'La Défense',
+        address: '29 Boulevard Haussmann, 75009 Paris',
+        coordinates: { lat: 48.8738, lng: 2.3337 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment'],
+        hours: 'L-V 09:00-17:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 8, international: 25 }
+    },
+    hours: 'L-V 09:00-17:00'
+  }
+]
+
+export const FRANCE_EXCHANGE_HOUSES: ExchangeHouse[] = [
+  {
+    id: 'change-fr',
+    name: 'Change de la Bourse',
+    country: 'FR',
+    established: 1985,
+    phone: '+33 1-42-60-32-32',
+    website: 'https://www.cdb-change.com',
+    locations: [
+      {
+        city: 'Paris',
+        district: 'Opéra',
+        address: '14 Rue Vivienne, 75002 Paris',
+        coordinates: { lat: 48.8686, lng: 2.3396 },
+        type: 'branch',
+        services: ['cash_exchange', 'delivery'],
+        hours: 'L-V 09:00-18:00, S 10:00-17:00'
+      }
+    ],
+    currencies: ['EUR', 'USD', 'GBP', 'CHF', 'JPY', 'CAD', 'AUD'],
+    commission: { min: 1, max: 2.5 },
+    spread: { min: 1.5, max: 3.5 },
+    hours: 'L-V 09:00-18:00, S 10:00-17:00',
+    rating: 4.4
+  }
+]
+
+export const FRANCE_FINANCIAL_DISTRICTS: FinancialDistrict[] = [
+  {
+    country: 'FR',
+    city: 'Paris',
+    name: 'La Défense',
+    description: 'Distrito de negocios más grande de Europa',
+    coordinates: { lat: 48.8924, lng: 2.2378 },
+    banks: 72,
+    exchangeHouses: 22,
+    corporateOffices: 1500,
+    tier: 1,
+    businessHours: 'L-V 09:00-18:00',
+    accessibility: 'Métro: La Défense (Ligne 1), RER A, Tramway T2',
+    majorInstitutions: ['BNP Paribas', 'Société Générale', 'Crédit Agricole', 'Total']
+  }
+]
+
+// ==========================================
+// 🇮🇹 ITALY
+// ==========================================
+
+export const ITALY_BANKS: Bank[] = [
+  {
+    id: 'intesa-it',
+    name: 'Intesa Sanpaolo',
+    tier: 'tier2',
+    country: 'IT',
+    type: 'internacional',
+    swift: 'BCITITMM',
+    website: 'https://www.intesasanpaolo.com',
+    phone: '+39 011-555-1',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 3470,
+    locations: [
+      {
+        city: 'Milan',
+        district: 'Centro',
+        address: 'Piazza San Carlo 156, 10121 Torino',
+        coordinates: { lat: 45.0703, lng: 7.6869 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'retail'],
+        hours: 'L-V 08:30-13:30, 14:30-16:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 3 },
+      transferFee: { domestic: 10, international: 30 }
+    },
+    hours: 'L-V 08:30-13:30, 14:30-16:00'
+  },
+  {
+    id: 'unicredit-it',
+    name: 'UniCredit',
+    tier: 'tier1',
+    country: 'IT',
+    type: 'internacional',
+    swift: 'UNCRITMM',
+    website: 'https://www.unicredit.it',
+    phone: '+39 02-8862-1',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 2850,
+    locations: [
+      {
+        city: 'Milan',
+        district: 'Porta Nuova',
+        address: 'Piazza Gae Aulenti, 20154 Milan',
+        coordinates: { lat: 45.4851, lng: 9.1916 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'private_banking'],
+        hours: 'L-V 08:30-13:30, 14:30-16:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.8, max: 2.5 },
+      transferFee: { domestic: 8, international: 28 }
+    },
+    hours: 'L-V 08:30-13:30, 14:30-16:00'
+  }
+]
+
+export const ITALY_EXCHANGE_HOUSES: ExchangeHouse[] = [
+  {
+    id: 'forexchange-it',
+    name: 'Forexchange',
+    country: 'IT',
+    established: 2003,
+    phone: '+39 06-4201-3769',
+    website: 'https://www.forexchange.it',
+    locations: [
+      {
+        city: 'Rome',
+        district: 'Termini',
+        address: 'Stazione Termini, 00185 Roma',
+        coordinates: { lat: 41.9009, lng: 12.5024 },
+        type: 'branch',
+        services: ['cash_exchange'],
+        hours: 'L-D 08:00-20:00'
+      }
+    ],
+    currencies: ['EUR', 'USD', 'GBP', 'CHF', 'JPY'],
+    commission: { min: 2, max: 4 },
+    spread: { min: 3, max: 6 },
+    hours: 'Varía por ubicación',
+    rating: 3.8
+  }
+]
+
+export const ITALY_FINANCIAL_DISTRICTS: FinancialDistrict[] = [
+  {
+    country: 'IT',
+    city: 'Milan',
+    name: 'Porta Nuova',
+    description: 'Centro financiero de Italia',
+    coordinates: { lat: 45.4851, lng: 9.1916 },
+    banks: 58,
+    exchangeHouses: 18,
+    corporateOffices: 380,
+    tier: 1,
+    businessHours: 'L-V 08:30-16:00',
+    accessibility: 'Metro: Garibaldi (M2, M5), Repubblica (M3)',
+    majorInstitutions: ['UniCredit', 'Borsa Italiana', 'Generali', 'Mediobanca']
+  }
+]
+
+// ==========================================
+// 🇪🇸 SPAIN
+// ==========================================
+
+export const SPAIN_BANKS: Bank[] = [
+  {
+    id: 'santander-es',
+    name: 'Banco Santander',
+    tier: 'tier1',
+    country: 'ES',
+    type: 'internacional',
+    swift: 'BSCHESMM',
+    website: 'https://www.bancosantander.es',
+    phone: '+34 912-89-62-00',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 2850,
+    locations: [
+      {
+        city: 'Madrid',
+        district: 'Paseo de la Castellana',
+        address: 'Paseo de Pereda 9-12, 39004 Santander',
+        coordinates: { lat: 43.4623, lng: -3.8100 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'private_banking'],
+        hours: 'L-V 08:30-14:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 8, international: 25 }
+    },
+    hours: 'L-V 08:30-14:00'
+  },
+  {
+    id: 'bbva-es',
+    name: 'BBVA (Banco Bilbao Vizcaya Argentaria)',
+    tier: 'tier1',
+    country: 'ES',
+    type: 'internacional',
+    swift: 'BBVAESMM',
+    website: 'https://www.bbva.es',
+    phone: '+34 902-22-44-66',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 2100,
+    locations: [
+      {
+        city: 'Madrid',
+        district: 'Azca',
+        address: 'Plaza de San Nicolás 4, 48005 Bilbao',
+        coordinates: { lat: 43.2567, lng: -2.9233 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'retail'],
+        hours: 'L-V 08:30-14:30'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 10, international: 28 }
+    },
+    hours: 'L-V 08:30-14:30'
+  },
+  {
+    id: 'caixa-es',
+    name: 'CaixaBank',
+    tier: 'tier2',
+    country: 'ES',
+    type: 'nacional',
+    swift: 'CAIXESBB',
+    website: 'https://www.caixabank.es',
+    phone: '+34 936-76-60-00',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 4200,
+    locations: [
+      {
+        city: 'Barcelona',
+        district: 'Diagonal',
+        address: 'Av. Diagonal 621-629, 08028 Barcelona',
+        coordinates: { lat: 41.3930, lng: 2.1419 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'retail'],
+        hours: 'L-V 08:30-14:00'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 1, max: 2.5 },
+      transferFee: { domestic: 8, international: 25 }
+    },
+    hours: 'L-V 08:30-14:00'
+  }
+]
+
+export const SPAIN_EXCHANGE_HOUSES: ExchangeHouse[] = [
+  {
+    id: 'exact-es',
+    name: 'Exact Change',
+    country: 'ES',
+    established: 2001,
+    phone: '+34 915-42-81-22',
+    website: 'https://www.exactchange.es',
+    locations: [
+      {
+        city: 'Madrid',
+        district: 'Gran Vía',
+        address: 'Gran Vía 27, 28013 Madrid',
+        coordinates: { lat: 40.4200, lng: -3.7010 },
+        type: 'branch',
+        services: ['cash_exchange', 'delivery'],
+        hours: 'L-V 10:00-20:00, S 10:00-14:00'
+      }
+    ],
+    currencies: ['EUR', 'USD', 'GBP', 'CHF', 'JPY', 'CAD'],
+    commission: { min: 1, max: 3 },
+    spread: { min: 2, max: 4 },
+    hours: 'L-V 10:00-20:00, S 10:00-14:00',
+    rating: 4.2
+  }
+]
+
+export const SPAIN_FINANCIAL_DISTRICTS: FinancialDistrict[] = [
+  {
+    country: 'ES',
+    city: 'Madrid',
+    name: 'Paseo de la Castellana',
+    description: 'Eje financiero de España',
+    coordinates: { lat: 40.4400, lng: -3.6889 },
+    banks: 64,
+    exchangeHouses: 20,
+    corporateOffices: 450,
+    tier: 1,
+    businessHours: 'L-V 08:30-14:00',
+    accessibility: 'Metro: Gregorio Marañón, Nuevos Ministerios, Santiago Bernabéu',
+    majorInstitutions: ['Santander', 'BBVA', 'BME']
+  }
+]
+
+// ==========================================
+// 🇨🇭 SWITZERLAND
+// ==========================================
+
+export const SWITZERLAND_BANKS: Bank[] = [
+  {
+    id: 'ubs-ch',
+    name: 'UBS Group',
+    tier: 'tier1',
+    country: 'CH',
+    type: 'internacional',
+    swift: 'UBSWCHZH80A',
+    website: 'https://www.ubs.com',
+    phone: '+41 44-234-1111',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 225,
+    locations: [
+      {
+        city: 'Zürich',
+        district: 'Bahnhofstrasse',
+        address: 'Bahnhofstrasse 45, 8001 Zürich',
+        coordinates: { lat: 47.3769, lng: 8.5417 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'private_banking'],
+        hours: 'L-V 08:30-16:30'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.3, max: 1.5 },
+      transferFee: { domestic: 15, international: 35 }
+    },
+    hours: 'L-V 08:30-16:30'
+  },
+  {
+    id: 'cs-ch',
+    name: 'Credit Suisse',
+    tier: 'tier1',
+    country: 'CH',
+    type: 'internacional',
+    swift: 'CRESCHZZ80A',
+    website: 'https://www.credit-suisse.com',
+    phone: '+41 44-333-1111',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 135,
+    locations: [
+      {
+        city: 'Zürich',
+        district: 'Paradeplatz',
+        address: 'Paradeplatz 8, 8001 Zürich',
+        coordinates: { lat: 47.3691, lng: 8.5396 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'investment', 'private_banking'],
+        hours: 'L-V 08:30-16:30'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.3, max: 1.5 },
+      transferFee: { domestic: 15, international: 35 }
+    },
+    hours: 'L-V 08:30-16:30'
+  },
+  {
+    id: 'zuercher-ch',
+    name: 'Zürcher Kantonalbank',
+    tier: 'tier2',
+    country: 'CH',
+    type: 'nacional',
+    swift: 'ZKBKCHZZ80A',
+    website: 'https://www.zkb.ch',
+    phone: '+41 44-293-93-93',
+    foreignExchange: true,
+    privateBanking: true,
+    corporateBanking: true,
+    branches: 85,
+    locations: [
+      {
+        city: 'Zürich',
+        district: 'Bahnhofstrasse',
+        address: 'Bahnhofstrasse 9, 8001 Zürich',
+        coordinates: { lat: 47.3774, lng: 8.5398 },
+        type: 'headquarters',
+        services: ['forex', 'corporate', 'retail'],
+        hours: 'L-V 08:30-16:30'
+      }
+    ],
+    fees: {
+      exchangeCommission: { min: 0.5, max: 2 },
+      transferFee: { domestic: 10, international: 30 }
+    },
+    hours: 'L-V 08:30-16:30'
+  }
+]
+
+export const SWITZERLAND_EXCHANGE_HOUSES: ExchangeHouse[] = [
+  {
+    id: 'sbb-change-ch',
+    name: 'SBB Change',
+    country: 'CH',
+    established: 1998,
+    phone: '+41 512-20-20-00',
+    website: 'https://www.sbb.ch',
+    locations: [
+      {
+        city: 'Zürich',
+        district: 'Hauptbahnhof',
+        address: 'Zürich HB, 8001 Zürich',
+        coordinates: { lat: 47.3779, lng: 8.5403 },
+        type: 'branch',
+        services: ['cash_exchange'],
+        hours: 'L-D 06:00-22:00'
+      }
+    ],
+    currencies: ['CHF', 'EUR', 'USD', 'GBP', 'JPY', 'CAD', 'AUD'],
+    commission: { min: 1.5, max: 3.5 },
+    spread: { min: 2, max: 5 },
+    hours: 'Varía por ubicación',
+    rating: 4.1
+  }
+]
+
+export const SWITZERLAND_FINANCIAL_DISTRICTS: FinancialDistrict[] = [
+  {
+    country: 'CH',
+    city: 'Zürich',
+    name: 'Bahnhofstrasse',
+    description: 'Centro de banca privada mundial',
+    coordinates: { lat: 47.3769, lng: 8.5417 },
+    banks: 82,
+    exchangeHouses: 15,
+    corporateOffices: 320,
+    tier: 1,
+    businessHours: 'L-V 08:30-16:30',
+    accessibility: 'Tram: Paradeplatz, Börsenstrasse',
+    majorInstitutions: ['UBS', 'Credit Suisse', 'Julius Baer', 'SIX Swiss Exchange']
+  },
+  {
+    country: 'CH',
+    city: 'Geneva',
+    name: 'Rue du Rhône',
+    description: 'Centro de comercio de commodities',
+    coordinates: { lat: 46.2044, lng: 6.1432 },
+    banks: 45,
+    exchangeHouses: 12,
+    corporateOffices: 220,
+    tier: 1,
+    businessHours: 'L-V 08:30-16:30',
+    accessibility: 'Tram: Cornavin, Bel-Air',
+    majorInstitutions: ['BNP Paribas Geneva', 'Pictet', 'Lombard Odier']
+  }
+]
+
+// ==========================================
+// EXPORTAR TODO EUROPA
+// ==========================================
+
+export const EUROPE_BANKS = [
+  ...UK_BANKS,
+  ...GERMANY_BANKS,
+  ...FRANCE_BANKS,
+  ...ITALY_BANKS,
+  ...SPAIN_BANKS,
+  ...SWITZERLAND_BANKS
+]
+
+export const EUROPE_EXCHANGE_HOUSES = [
+  ...UK_EXCHANGE_HOUSES,
+  ...GERMANY_EXCHANGE_HOUSES,
+  ...FRANCE_EXCHANGE_HOUSES,
+  ...ITALY_EXCHANGE_HOUSES,
+  ...SPAIN_EXCHANGE_HOUSES,
+  ...SWITZERLAND_EXCHANGE_HOUSES
+]
+
+export const EUROPE_FINANCIAL_DISTRICTS = [
+  ...UK_FINANCIAL_DISTRICTS,
+  ...GERMANY_FINANCIAL_DISTRICTS,
+  ...FRANCE_FINANCIAL_DISTRICTS,
+  ...ITALY_FINANCIAL_DISTRICTS,
+  ...SPAIN_FINANCIAL_DISTRICTS,
+  ...SWITZERLAND_FINANCIAL_DISTRICTS
+]
